@@ -4,15 +4,15 @@ const validateRegistry = (e) =>{
     e.preventDefault();
 
     //Obteniendo datos. Creando las constantes
-    const username = document.querySelector("#validationCustomUsername").value;
-    const email = document.querySelector("#email").value;
+    const username = document.querySelector("#validationCustomUsername").value.trim();
+    const email = document.querySelector("#email").value.trim()
     const password = document.querySelector("#validationPassword").value;
-    const retypedPassword = document.querySelector("#validationPassword").value;
+    const retypedPassword = document.querySelector("#validationPasswordAgain").value;
 
     //Call function to validate username:
     checkIfUsernameIsCorrect(username);
     checkIfEmailIsCorrect(email);
-
+    checkIfPasswordIsCorrect(password, retypedPassword);
 };
 
 //Verificar nombre de usuario:
@@ -96,7 +96,7 @@ const checkIfEmailIsCorrect = (email) => {
         return;
     }
 
-    if(emailEndsWithCom(email)){
+    if(!emailEndsWithCom(email)){
         invalidEmail.innerHTML = "El correo debe terminar en '.com'";
         invalidEmail.classList.remove("invalid-feedback");
         registryButton.disabled = true;
@@ -117,8 +117,8 @@ const checkIfEmailIsCorrect = (email) => {
         return;
     }
 
-    if(emailHasNoAtSymbol(email)){
-        invalidEmail.innerHTML = "El correo no contiene ninguna '@'";
+    if(!emailHasNoAtSymbol(email)){
+        invalidEmail.innerHTML = "El correo tiene un error con '@'";
         invalidEmail.classList.remove("invalid-feedback");
         registryButton.disabled = true;
         return;
@@ -129,6 +129,63 @@ const checkIfEmailIsCorrect = (email) => {
     invalidEmail.innerHTML = "";
     invalidEmail.classList.add("invalid-feedback");
 };
+
+const checkIfPasswordIsCorrect = (password, retypedPassword) => {
+    const invalidPassword = document.querySelector("[data-invalid-password]");
+    const invalidRetypedPassword = document.querySelector("[data-invalid-retyped-password]");
+
+    // Si no hay clave alguna:
+    if(!password || !retypedPassword){
+        if(!password){
+            invalidPassword.innerHTML = "La contraseña es obligatoria";
+            invalidPassword.classList.remove("invalid-feedback");
+        }
+        else{
+            invalidRetypedPassword.innerHTML = "La contraseña es obligatoria";
+            invalidRetypedPassword.classList.remove("invalid-feedback");
+        }
+        registryButton.disabled = true;
+        return;
+    }
+
+    // Mostrar mensaje si la clave es demasiado corta:
+    if(checkPasswordLong(password)){
+        invalidPassword.innerHTML = "La contraseña es demasiado corta";
+        invalidPassword.classList.remove("invalid-feedback");
+        registryButton.disabled = true;
+        return;
+    }
+
+    // Mensaje si la clave contiene espacios:
+    if(doesPasswordHasSpaces(password)){
+        invalidPassword.innerHTML = "La contraseña no debe contener espacios";
+        invalidPassword.classList.remove("invalid-feedback");
+        registryButton.disabled = true;
+        return;
+    }
+
+    // Mostrar mensaje si la clave no contiene caracteres especiales:
+    if(!doesPasswordHasChars(password)){
+        invalidPassword.innerHTML = "La contraseña debe contener al menos un caracter especial";
+        invalidPassword.classList.remove("invalid-feedback");
+        registryButton.disabled = true;
+        return;
+    }
+
+    if(!doesPasswordsAreEquals(password, retypedPassword)){
+        invalidRetypedPassword.innerHTML = "Las contraseña no son iguales";
+        invalidRetypedPassword.classList.remove("invalid-feedback");
+        registryButton.disabled = true;
+        return;
+    }
+
+    // Si todas las condiciones se cumplen, eliminar el mensaje de error:
+    invalidPassword.innerHTML = "";
+    invalidRetypedPassword.innerHTML = "";
+    invalidPassword.classList.remove("invalid-feedback");
+    invalidRetypedPassword.classList.remove("invalid-feedback");
+    alert("Registro completado satisfactoriamente");
+}
 
 //--------------------------- Validar nombres de usuario -------------------------------------
 // Comprobar que los números del nombre de usuario estén al final del nombre:
@@ -149,10 +206,11 @@ const doesUsernameHasSpaces = (username) => {
 
 // Verificar que no contenga caracteres especiales:
 const usernameHasCharacters = (username) => {
-    const availableChars = "-~`!@#$%^&*()_+={[}]|\\:;\"'<,>.?-";
+    const availableChars = "~`!@#$%^&*()+={[}]|\\:;\"'<,>.?-";
+    const dash = /-/;
     const regex = new RegExp(`[${availableChars}]`);
 
-    return regex.test(username);
+    return regex.test(username) || dash.test(username);
 };
 
 // ------------------------------------ Validar correo ------------------------------------------
@@ -172,20 +230,23 @@ const emailHasUnderscoreBeginning = (email) => {
 //Verificar si posee caracteres especiales
 const emailHasChars = (email) => {
     const availableChars = "~`!#$%^&*()+={[}]|\\:;\"'<,>?-";
+
+    //He estado tendiendo errores al analizar el caso del guión medio, so:
+    const dash = /-/;
     const regex = new RegExp(`[${availableChars}]`);
 
-    return regex.test(email);
+    return regex.test(email) || dash.test(email);
 };
 
 //Verificar si termina en ".com"
 const emailEndsWithCom = (email) => {
-    const regex = /\*gmail.com$/i;
+    const regex = /\.com$/i;
     return regex.test(email);
 };
 
 // Verificar si el correo contiene mayúsculas
 const emailHasUppercaseLetters = (email) => {
-    const regex = /[A-Z]/;
+    const regex = /^[A-Z]\w*@.*\.com$/;
     return regex.test(email);
 };
 
@@ -197,8 +258,31 @@ const emailHasSpaces = (email) => {
 
 // Verificar si contiene la arroba "@"
 const emailHasNoAtSymbol = (email) => {
-    const regex = /@/;
-    return !regex.test(email);
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
 };
+
+//-----------------------------------Validamos las claves --------------------------
+// Función para verificar longitud de clave:
+const checkPasswordLong = (password) => {
+    return password.length < 8;
+};
+
+// Función para verificar si la clave contiene espacios:
+const doesPasswordHasSpaces = (password) => {
+    return password.includes(" ");
+};
+
+// Función para verificar si la clave contiene caracteres especiales:
+const doesPasswordHasChars = (password) => {
+    const availableChars = "~`!@#$%^&*()_+={[}]|\\:;\"'<,>.?-";
+    const regex = new RegExp(`[${availableChars}]`);
+
+    return regex.test(password);
+};
+
+const doesPasswordsAreEquals = (password, retypedPassword) => {
+    return password === retypedPassword;
+}
 
 export default validateRegistry;
