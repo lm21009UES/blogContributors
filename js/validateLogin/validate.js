@@ -56,7 +56,7 @@ const validatePassword = (password) => {
     }
 
     // Mostrar mensaje si la clave no contiene caracteres especiales:
-    if(doesPasswordHasChars(password)){
+    if(!doesPasswordHasChars(password)){
         invalidPassword.innerHTML = "La contraseña debe contener al menos un caracter especial";
         invalidPassword.classList.remove("invalid-feedback");
         return;
