@@ -17,7 +17,7 @@
             background: linear-gradient(to left, rgb(67,125,139), rgb(8,23,52));
         }
     </style>
-
+      <script src="../js/validateRegistry/events.js" type="module" defer></script>
   </head>
 
  
@@ -31,44 +31,42 @@
             <div class="col bg d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded"></div>
 
             <div class="col bg-light p-4 rounded-end">
-                <h2 class="text-center py-4">Registrate es gratis</h2>
+                <h2 class="text-center py-4">Registrate, es gratis</h2>
                 <!--Formulario de registro-->
                 <form action="#" class="action">
                     <div class="mb-4">
                         <label for="validationCustomUsername" class="form-label">Nombre de usuario</label>
-                        <input type="text" class="form-control" id="validationCustomUsername">
+                        <input type="text" class="form-control" id="validationCustomUsername" onkeydown="enableButton()">
                     </div>
                     <div class="invalid-feedback" data-invalid-username style="color: red;">
-                        El nombre de usuario es obligatorio.
                     </div>
                     <div class="mb-4">
                         <label for="email" class="form-label">Correo</label>
-                        <input type="email" class="form-control" id="email" name="email">
+                        <input type="email" class="form-control" id="email" name="email" onkeydown="enableButton()">
                     </div>
                     <div class="invalid-feedback" data-invalid-email style="color: red;">
-                        El correo es obligatorio.
                     </div>
                     <div class="mb-4">
                         <label for="validationPassword" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="validationPassword" name="Password">
+                        <input type="password" class="form-control" id="validationPassword" name="Password" onkeydown="enableButton()">
                     </div>
                     <div class="invalid-feedback" data-invalid-password style="color: red;">
-                        Contraseña inválida.
                     </div>
                     <div class="mb-4">
-                        <label for="validationPasswordAgain" class="form-label">Confirmar contraseña</label>
-                        <input type="password" class="form-control" id="validationPasswordAgain" name="Password">
+
+                        <label for="validationPasswordAgain" class="form-label">Confirmar contaseña</label>
+                        <input type="password" class="form-control" id="validationPasswordAgain" name="Password" onkeydown="enableButton()">
+
                     </div>
                     <div class="invalid-feedback" data-invalid-retyped-password style="color: red;">
-                        Las contraseñas no coinciden.
                     </div>
 
                     <!--Button-->
                     <div class="d-grid mx-sm-4 mb-4">
-                        <button type="submit" class="btn btn-primary">Registrarse</button>
+                        <button type="submit" class="btn btn-primary" Signup-button>Registarse</button>
                     </div>
                     <div class="text-center mb-3">
-                        <span>¿Ya tienes una cuenta?<a href="#" class="link"> Iniciar sesión</a></span>
+                        <span>¿Ya tienes una cuenta?<a href="Login.html" class="link"> Iniciar sesión</a></span>
                      </div>
                     
                 </form>
