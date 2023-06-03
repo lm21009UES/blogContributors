@@ -1,4 +1,5 @@
 //Validaciones del login
+document.getElementById('Password').type = "password";
 
 const validateLogin = (e) =>{
     e.preventDefault();
@@ -15,7 +16,9 @@ const validateLogin = (e) =>{
     }
     else{
         validatePassword(password);
-        getPasswordLong(password);
+        passwordIsTooShort(password);
+        doesPasswordHasSpaces(password);
+        doesPasswordHasChars(password);
     }
 }
 
@@ -45,7 +48,7 @@ const validatePassword = (password) => {
     }
 }
 
-const getPasswordLong = (password) => {
+const passwordIsTooShort = (password) => {
     const shortPassword = document.querySelector("[data-short-password]");
 
     if(password.length < 8){
@@ -55,6 +58,33 @@ const getPasswordLong = (password) => {
         shortPassword.classList.add("invalid-feedback");
     }
 }
+
+const doesPasswordHasSpaces = (password) => {
+    const passwordHasSpaces = document.querySelector("[data-password-has-spaces]");
+
+    if(password.includes(" ")){
+        passwordHasSpaces.classList.remove("invalid-feedback");
+    }
+    else{
+        passwordHasSpaces.classList.add("invalid-feedback");
+    }
+}
+
+const doesPasswordHasChars = (password) => {
+    const passwordHasNoChars = document.querySelector("[data-password-has-not-chars]");
+    const availableChars = "~`!@#$%^&*()_+={[}]|\\:;\"'<,>.?-";
+
+    const regex = new RegExp(`[${availableChars.replace(/[-\\^]/g, '\\$&')}]`);
+
+    if (password.match(regex) === null) {
+        passwordHasNoChars.classList.remove("invalid-feedback");
+    } else {
+        passwordHasNoChars.classList.add("invalid-feedback");
+    }
+};
+
+
+
 
 //Exportamos 
 export default validateLogin;
