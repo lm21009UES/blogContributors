@@ -13,7 +13,7 @@ const validateLogin = (e) =>{
     //Call functions to validate username:
     validateUsername(username);
     validatePassword(password);
-}
+};
 
 //----------------------------------------------------------------------------
 //Validar usuario:
@@ -28,7 +28,7 @@ const validateUsername = (user) => {
         // Si se proporciona un nombre de usuario, se agrega la clase de retroalimentación de error
         invalidUser.classList.add("invalid-feedback");
     }
-}
+};
 
 
 //Validar clave ingresada:
@@ -65,24 +65,24 @@ const validatePassword = (password) => {
     // Si todas las condiciones se cumplen, eliminar el mensaje de error:
     invalidPassword.innerHTML = "";
     invalidPassword.classList.remove("invalid-feedback");
-}
+};
 
 // Función para verificar longitud de clave:
 const checkPasswordLong = (password) => {
     return password.length < 8;
-}
+};
 
 // Función para verificar si la clave contiene espacios:
 const doesPasswordHasSpaces = (password) => {
     return password.includes(" ");
-}
+};
 
 // Función para verificar si la clave contiene caracteres especiales:
 const doesPasswordHasChars = (password) => {
     const availableChars = "~`!@#$%^&*()_+={[}]|\\:;\"'<,>.?-";
     const regex = new RegExp(`[${availableChars}]`);
 
-    return !regex.test(password);
+    return regex.test(password);
 };
 
 //Exportamos 
