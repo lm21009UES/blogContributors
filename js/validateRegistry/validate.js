@@ -4,10 +4,10 @@ const validateRegistry = (e) =>{
     e.preventDefault();
 
     //Obteniendo datos. Creando las constantes
-    const username = document.querySelector("#validationCustomUsername").value;
-    const email = document.querySelector("#email").value;
-    const password = document.querySelector("#validationPassword").value;
-    const retypedPassword = document.querySelector("#validationPassword").value;
+    const username = document.querySelector("#validationCustomUsername").value.trim();
+    const email = document.querySelector("#email").value.trim()
+    const password = document.querySelector("#validationPassword").value.trim();
+    const retypedPassword = document.querySelector("#validationPassword").value.trim();
 
     //Call function to validate username:
     checkIfUsernameIsCorrect(username);
@@ -96,7 +96,7 @@ const checkIfEmailIsCorrect = (email) => {
         return;
     }
 
-    if(emailEndsWithCom(email)){
+    if(!emailEndsWithCom(email)){
         invalidEmail.innerHTML = "El correo debe terminar en '.com'";
         invalidEmail.classList.remove("invalid-feedback");
         registryButton.disabled = true;
@@ -117,8 +117,8 @@ const checkIfEmailIsCorrect = (email) => {
         return;
     }
 
-    if(emailHasNoAtSymbol(email)){
-        invalidEmail.innerHTML = "El correo no contiene ninguna '@'";
+    if(!emailHasNoAtSymbol(email)){
+        invalidEmail.innerHTML = "El correo tiene un error con '@'";
         invalidEmail.classList.remove("invalid-feedback");
         registryButton.disabled = true;
         return;
@@ -149,10 +149,11 @@ const doesUsernameHasSpaces = (username) => {
 
 // Verificar que no contenga caracteres especiales:
 const usernameHasCharacters = (username) => {
-    const availableChars = "-~`!@#$%^&*()_+={[}]|\\:;\"'<,>.?-";
+    const availableChars = "~`!@#$%^&*()+={[}]|\\:;\"'<,>.?-";
+    const dash = /-/;
     const regex = new RegExp(`[${availableChars}]`);
 
-    return regex.test(username);
+    return regex.test(username) || dash.test(username);
 };
 
 // ------------------------------------ Validar correo ------------------------------------------
@@ -172,20 +173,23 @@ const emailHasUnderscoreBeginning = (email) => {
 //Verificar si posee caracteres especiales
 const emailHasChars = (email) => {
     const availableChars = "~`!#$%^&*()+={[}]|\\:;\"'<,>?-";
+
+    //He estado tendiendo errores al analizar el caso del guión medio, so:
+    const dash = /-/;
     const regex = new RegExp(`[${availableChars}]`);
 
-    return regex.test(email);
+    return regex.test(email) || dash.test(email);
 };
 
 //Verificar si termina en ".com"
 const emailEndsWithCom = (email) => {
-    const regex = /\*gmail.com$/i;
+    const regex = /\.com$/i;
     return regex.test(email);
 };
 
 // Verificar si el correo contiene mayúsculas
 const emailHasUppercaseLetters = (email) => {
-    const regex = /[A-Z]/;
+    const regex = /^[A-Z]\w*@.*\.com$/;
     return regex.test(email);
 };
 
@@ -197,8 +201,9 @@ const emailHasSpaces = (email) => {
 
 // Verificar si contiene la arroba "@"
 const emailHasNoAtSymbol = (email) => {
-    const regex = /@/;
-    return !regex.test(email);
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
 };
+
 
 export default validateRegistry;
