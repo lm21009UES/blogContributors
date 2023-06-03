@@ -1,3 +1,5 @@
+const invalidPassword = document.querySelector("[data-password]");
+
 //Validaciones del login
 document.getElementById('Password').type = "password";
 
@@ -8,18 +10,9 @@ const validateLogin = (e) =>{
     const username = document.getElementById("UserName").value;
     const password = document.getElementById('Password').value;
 
-    //Call function to validate username:
+    //Call functions to validate username:
     validateUsername(username);
-
-    if(!password){
-        validatePassword(password);
-    }
-    else{
-        validatePassword(password);
-        passwordIsTooShort(password);
-        doesPasswordHasSpaces(password);
-        doesPasswordHasChars(password);
-    }
+    validatePassword(password);
 }
 
 //----------------------------------------------------------------------------
@@ -28,9 +21,11 @@ const validateUsername = (user) => {
     const invalidUser = document.querySelector("[data-invalid-username]");
 
     if(!user){
+        // Si no se proporciona un nombre de usuario, se elimina la clase de retroalimentación de error
         invalidUser.classList.remove("invalid-feedback");
     }
     else{
+        // Si se proporciona un nombre de usuario, se agrega la clase de retroalimentación de error
         invalidUser.classList.add("invalid-feedback");
     }
 }
@@ -38,49 +33,56 @@ const validateUsername = (user) => {
 
 //Validar clave ingresada:
 const validatePassword = (password) => {
-    const invalidPassword = document.querySelector("[data-invalid-password]");
 
+    // Si no hay clave alguna:
     if(!password){
+        invalidPassword.innerHTML = "La contraseña es obligatoria";
         invalidPassword.classList.remove("invalid-feedback");
+        return;
     }
-    else{
-        invalidPassword.classList.add("invalid-feedback");
+
+    // Mostrar mensaje si la clave es demasiado corta:
+    if(checkPasswordLong(password)){
+        invalidPassword.innerHTML = "La contraseña es demasiado corta";
+        invalidPassword.classList.remove("invalid-feedback");
+        return;
     }
+
+    // Mensaje si la clave contiene espacios:
+    if(doesPasswordHasSpaces(password)){
+        invalidPassword.innerHTML = "La contraseña no debe contener espacios";
+        invalidPassword.classList.remove("invalid-feedback");
+        return;
+    }
+
+    // Mostrar mensaje si la clave no contiene caracteres especiales:
+    if(doesPasswordHasChars(password)){
+        invalidPassword.innerHTML = "La contraseña debe contener al menos un caracter especial";
+        invalidPassword.classList.remove("invalid-feedback");
+        return;
+    }
+
+    // Si todas las condiciones se cumplen, eliminar el mensaje de error:
+    invalidPassword.innerHTML = "";
+    invalidPassword.classList.remove("invalid-feedback");
 }
 
-const passwordIsTooShort = (password) => {
-    const shortPassword = document.querySelector("[data-short-password]");
-
-    if(password.length < 8){
-        shortPassword.classList.remove("invalid-feedback");
-    }
-    else{
-        shortPassword.classList.add("invalid-feedback");
-    }
+// Función para verificar longitud de clave:
+const checkPasswordLong = (password) => {
+    return password.length < 8;
 }
 
+// Función para verificar si la clave contiene espacios:
 const doesPasswordHasSpaces = (password) => {
-    const passwordHasSpaces = document.querySelector("[data-password-has-spaces]");
-
-    if(password.includes(" ")){
-        passwordHasSpaces.classList.remove("invalid-feedback");
-    }
-    else{
-        passwordHasSpaces.classList.add("invalid-feedback");
-    }
+    return password.includes(" ");
 }
 
+// Función para verificar si la clave contiene caracteres especiales:
 const doesPasswordHasChars = (password) => {
-    const passwordHasNoChars = document.querySelector("[data-password-has-not-chars]");
     const availableChars = "~`!@#$%^&*()_+={[}]|\\:;\"'<,>.?-";
+    const regex = new RegExp(`[${availableChars}]`);
 
-    const regex = new RegExp(`[${availableChars.replace(/[-\\^]/g, '\\$&')}]`);
-
-    if (password.match(regex) === null) {
-        passwordHasNoChars.classList.remove("invalid-feedback");
-    } else {
-        passwordHasNoChars.classList.add("invalid-feedback");
-    }
+    return !regex.test(password);
 };
 
 //Exportamos 
