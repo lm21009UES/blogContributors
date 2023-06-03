@@ -36,19 +36,31 @@
                 <form action="#" class="action">
                     <div class="mb-4">
                         <label for="validationCustomUsername" class="form-label">Nombre de usuario</label>
-                        <input type="text" class="form-control" id="UserName">
+                        <input type="text" class="form-control" id="validationCustomUsername">
+                    </div>
+                    <div class="invalid-feedback" data-invalid-username style="color: red;">
+                        El nombre de usuario es obligatorio.
                     </div>
                     <div class="mb-4">
                         <label for="email" class="form-label">Correo</label>
-                        <input type="email" class="form-control" name="email">
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="invalid-feedback" data-invalid-email style="color: red;">
+                        El correo es obligatorio.
                     </div>
                     <div class="mb-4">
                         <label for="validationPassword" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" name="Password">
+                        <input type="password" class="form-control" id="validationPassword" name="Password">
+                    </div>
+                    <div class="invalid-feedback" data-invalid-password style="color: red;">
+                        Contraseña inválida.
                     </div>
                     <div class="mb-4">
-                        <label for="validationPassword" class="form-label">Confirmar contaseña</label>
-                        <input type="password" class="form-control" name="Password">
+                        <label for="validationPasswordAgain" class="form-label">Confirmar contaseña</label>
+                        <input type="password" class="form-control" id="validationPasswordAgain" name="Password">
+                    </div>
+                    <div class="invalid-feedback" data-invalid-retyped-password style="color: red;">
+                        Las contraseñas no coinciden.
                     </div>
 
                     <!--Button-->

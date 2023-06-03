@@ -83,8 +83,5 @@ const doesPasswordHasChars = (password) => {
     }
 };
 
-
-
-
 //Exportamos 
 export default validateLogin;
