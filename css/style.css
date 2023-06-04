@@ -22,3 +22,16 @@ body{
     background-color: rgb(24, 64, 122);
 }
 
+<<<<<<< HEAD
+=======
+
+.link{
+    color: aquamarine;
+}
+
+.link:hover{
+    cursor: pointer;
+    color:cyan;
+}
+
+>>>>>>> john
