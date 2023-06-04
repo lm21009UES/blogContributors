@@ -22,3 +22,13 @@ body{
     background-color: rgb(24, 64, 122);
 }
 
+
+.link{
+    color: aquamarine;
+}
+
+.link:hover{
+    cursor: pointer;
+    color:cyan;
+}
+
