@@ -1,0 +1,161 @@
+body{
+    padding: 0;
+    margin: 0;
+    line-height:1.6;
+
+    background-image: url(../images/Fondo2Principal.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    /*Dando un color mas oscuro a la imagen de fondo*/
+    background-color: rgb(50, 50, 50);
+    background-blend-mode: soft-light ;
+
+}
+
+/*Definiendo el tamaño del logo*/
+.Logo{
+    width: 10rem;
+    height: 5rem;
+    border-radius: 6px;
+    
+}
+
+h2{
+    color: #f3f3f3f3;
+    text-align: center;
+    padding: 11rem;
+    font-size: 3rem;
+}
+
+/*Dandole estilo al menu*/
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    min-height: 8vh;
+    background: rgba(45, 62, 80, 0.8);
+   
+}
+
+/*Button*/
+.btn{
+    display: none;
+    cursor: pointer;
+    border: none;
+    margin: 0;
+    padding: 0;
+    background-color:transparent ;
+}
+
+/*Estilo del button en forma de icono*/
+.btn span{
+    display: block;
+    background-color: #f3f3f3f3;
+    height: 3px;
+    width: 28px;
+    margin: 10px auto;
+    border-radius:2px ;
+}
+
+/*Opcines del menu*/
+.Menu{
+    display: flex;
+    padding: 0;
+}
+
+.Menu li{
+    padding:0 40px;
+    list-style-type: none;
+
+    /*Definiendo una pequeña transición*/
+    transition: 0.4s;
+}
+
+.Menu li:hover{
+    background-color:rgba(67, 125, 139, 0.5); 
+    border-radius: 4px;
+}
+
+.Menu li a{
+    text-decoration: none;
+    font-size: 1.8rem;
+    color: #f3f3f3f3;  
+}
+
+
+/*Responsive dispositivos moviles*/
+@media (max-width:768px){
+    body{
+        overflow: hidden;
+    }
+
+    .Logo{
+        padding-left: 25px;
+    }
+
+    .btn{
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 25px;
+        transition: 0.2s 0.1s;
+    }
+
+    .btn:hover{
+        transform: rotate(320deg);
+
+    }
+
+    nav{
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 25px;
+        padding-bottom: 25px 0;
+    }
+
+    .Menu{
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        height: 90vh;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        display: none;
+        opacity: 0;
+    }
+
+    .Menu li{
+        width: 100%;
+        text-align: center;
+        padding: 20px;
+    }
+    
+}
+
+/*Definiendo una pequeña animacion para el menu*/
+@keyframes muestraMenu{
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+
+.Menu.activado{
+    display: flex;
+    /*Agregando la animacio*/
+    animation:muestraMenu 355ms ease-in-out both;
+}
+
+/*Animacion para el button*/
+.br-1.animado{
+    transform: rotate(-45deg) translate(-10px,8px);
+}
+
+.br-2.animado{
+    opacity: 0;
+}
+
+.br-3.animado{
+    transform:rotate(45deg) translate(-10px,-8px);
+}
