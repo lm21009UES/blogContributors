@@ -4,6 +4,8 @@ import {checkIfEmailIsCorrect} from "./validations/validateEmail.js";
 import {checkIfPasswordIsCorrect} from "./validations/validatePassword.js";
 
 const validateRegistry = (e) =>{
+    e.preventDefault();
+
     //Obteniendo datos. Creando las constantes
     const username = document.querySelector("#validationCustomUsername").value.trim();
     const email = document.querySelector("#email").value.trim()
@@ -24,7 +26,6 @@ const validateRegistry = (e) =>{
         document.querySelector("#validationPassword").value = "";
         document.querySelector("#validationPasswordAgain").value = "";
     }
-    e.preventDefault();
 };
 
 export default validateRegistry;

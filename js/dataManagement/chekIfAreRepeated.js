@@ -1,6 +1,3 @@
-const userData = localStorage.getItem("database") || [];
-const data = JSON.parse(userData);
-
 export const checkIfUserAlreadyExists = (username) => {
     const dataList = JSON.parse(localStorage.getItem("database")) || [];
 
