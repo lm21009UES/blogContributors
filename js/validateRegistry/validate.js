@@ -1,18 +1,25 @@
+import saveItems from "../dataManagement/dataManagement.js";
+
 const registryButton = document.querySelector("[Signup-button]");
 
 const validateRegistry = (e) =>{
-    e.preventDefault();
 
     //Obteniendo datos. Creando las constantes
     const username = document.querySelector("#validationCustomUsername").value.trim();
     const email = document.querySelector("#email").value.trim()
-    const password = document.querySelector("#validationPassword").value;
-    const retypedPassword = document.querySelector("#validationPasswordAgain").value;
+    const password = document.querySelector("#validationPassword").value.trim();
+    const retypedPassword = document.querySelector("#validationPasswordAgain").value.trim();
 
     //Call function to validate username:
-    checkIfUsernameIsCorrect(username);
-    checkIfEmailIsCorrect(email);
-    checkIfPasswordIsCorrect(password, retypedPassword);
+    if(checkIfUsernameIsCorrect(username) && checkIfEmailIsCorrect(email) && checkIfPasswordIsCorrect(password, retypedPassword)){
+        saveItems(username, email, password);
+
+        // Clear the input fields
+        document.querySelector("#validationCustomUsername").value = "";
+        document.querySelector("#email").value = "";
+        document.querySelector("#validationPassword").value = "";
+        document.querySelector("#validationPasswordAgain").value = "";
+    }
 };
 
 //Verificar nombre de usuario:
@@ -62,6 +69,7 @@ const checkIfUsernameIsCorrect = (username) => {
     registryButton.disabled = false;
     invalidUsername.innerHTML = "";
     invalidUsername.classList.add("invalid-feedback");
+    return true;
 };
 
 const checkIfEmailIsCorrect = (email) => {
@@ -128,6 +136,7 @@ const checkIfEmailIsCorrect = (email) => {
     registryButton.disabled = false;
     invalidEmail.innerHTML = "";
     invalidEmail.classList.add("invalid-feedback");
+    return true;
 };
 
 const checkIfPasswordIsCorrect = (password, retypedPassword) => {
@@ -165,7 +174,7 @@ const checkIfPasswordIsCorrect = (password, retypedPassword) => {
     }
 
     // Mostrar mensaje si la clave no contiene caracteres especiales:
-    if(!doesPasswordHasChars(password)){
+    if(doesPasswordHasChars(password)){
         invalidPassword.innerHTML = "La contraseña debe contener al menos un caracter especial";
         invalidPassword.classList.remove("invalid-feedback");
         registryButton.disabled = true;
@@ -184,7 +193,7 @@ const checkIfPasswordIsCorrect = (password, retypedPassword) => {
     invalidRetypedPassword.innerHTML = "";
     invalidPassword.classList.remove("invalid-feedback");
     invalidRetypedPassword.classList.remove("invalid-feedback");
-    alert("Registro completado satisfactoriamente");
+    return true;
 }
 
 //--------------------------- Validar nombres de usuario -------------------------------------
