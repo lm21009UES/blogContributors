@@ -11,6 +11,10 @@ const validateRegistry = (e) =>{
     const retypedPassword = document.querySelector("#validationPasswordAgain").value.trim();
 
     //Call function to validate username:
+    checkIfUsernameIsCorrect(username);
+    checkIfEmailIsCorrect(email);
+    checkIfPasswordIsCorrect(password, retypedPassword);
+
     if(checkIfUsernameIsCorrect(username) && checkIfEmailIsCorrect(email) && checkIfPasswordIsCorrect(password, retypedPassword)){
         saveItems(username, email, password);
 
