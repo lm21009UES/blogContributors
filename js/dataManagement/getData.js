@@ -1,22 +1,37 @@
 const dataList = JSON.parse(localStorage.getItem("database")) || [];
 
-export const getUsername = () => {
+export const getUsername = (username) => {
     for (let i = 0; i < dataList.length; i++) {
-        return dataList[i].username;
+        if (dataList[i].username === username) {
+            return true; // Usuario encontrado
+        }
     }
-    throw new Error("El usuario no existe");
+    return false;
 };
 
-export const getEmail = () => {
+export const getEmail = (email) => {
     for (let i = 0; i < dataList.length; i++) {
-        return dataList[i].email;
+        if (dataList[i].email === email) {
+            return true; // Correo encontrado
+        }
     }
-    throw new Error("El usuario no existe");
+    return false;
 };
 
-export const getPassword = () => {
+export const getPassword = (password) => {
     for (let i = 0; i < dataList.length; i++) {
-        return dataList[i].password;
+        if (dataList[i].password === password) {
+            return true; // Clave encontrada
+        }
     }
-    throw new Error("El usuario no existe");
+    return false;
 };
+
+export const isLoginOk = (username, password) => {
+    for (let i = 0; i < dataList.length; i++) {
+        if (dataList[i].username === username && dataList[i].password === password) {
+            return true; // Correo encontrado
+        }
+    }
+    return false;
+}
