@@ -1,60 +1,53 @@
-import {getUsername, getPassword} from "../dataManagement/getData.js";
+import { isLoginOk } from "../dataManagement/getData.js";
 
 const invalidUser = document.querySelector("[data-invalid-username]");
 const invalidPassword = document.querySelector("[data-password]");
 
-//Validaciones del login
+// Validaciones del login
 document.getElementById('Password').type = "password";
 
-const validateLogin = (e) =>{
+const validateLogin = (e) => {
     e.preventDefault();
 
-    //Obteniendo datos. Creando las constantes
+    // Obteniendo datos. Creando las constantes
     const username = document.getElementById("UserName").value;
     const password = document.getElementById('Password').value;
 
-    //Call functions to validate username:
+    // Call functions to validate username:
     validateData(username, password);
 };
 
 //----------------------------------------------------------------------------
-//Validar datos:
+// Validar datos:
 const validateData = (user, password) => {
-    if(!user){
-        // Si no se proporciona un nombre de usuario, se elimina la clase de retroalimentación de error
-        invalidUser.innerHTML = "El nombre de usuario es obligatorio."
-        invalidUser.classList.remove("invalid-feedback");
+    if (!user || !password) {
+        if (!user) {
+            // Si no se proporciona un nombre de usuario, se muestra el mensaje de error
+            invalidUser.innerHTML = "El nombre de usuario es obligatorio.";
+            invalidUser.classList.remove("invalid-feedback");
+        }
+
+        if (!password) {
+            // Si no se proporciona una clave, se muestra el mensaje de error
+            invalidPassword.innerHTML = "La contraseña es obligatoria.";
+            invalidPassword.classList.remove("invalid-feedback");
+        }
         return;
     }
 
-    if(!password){
-        // Si no se proporciona una clave, se elimina la clase de retroalimentación de error
-        invalidPassword.innerHTML = "La contraseña es obligatoria.";
+    if (!isLoginOk(user, password)) {
+        // La contraseña no coincide
+        invalidPassword.innerHTML = "Usuario o contraseña incorrectos";
         invalidPassword.classList.remove("invalid-feedback");
         return;
     }
 
-    if(user !== getUsername()){
-        // Si no existe ese usuario:
-        alert(getUsername());
-        invalidUser.innerHTML = "Usuario no encontrado";
-        invalidUser.classList.remove("invalid-feedback");
-        return;
-    }
-
-    if(user === getUsername() && password !== getPassword()){
-        // Si no existe ese usuario:
-        alert(getPassword());
-        invalidPassword.innerHTML = "Contraseña incorrecta";
-        invalidPassword.classList.remove("invalid-feedback");
-        return;
-    }
-
-    alert("Inicio de sesión correcto. Bienvenido " + getUsername());
-    invalidUser.innerHTML = "";
-    invalidPassword.innerHTML = "";
-    invalidUser.classList.remove("invalid-feedback")
+    alert("Inicio de sesión correcto. Bienvenido, " + user);
+    document.getElementById("UserName").value = "";
+    document.getElementById('Password').value = "";
+    invalidUser.classList.remove("invalid-feedback");
+    invalidPassword.classList.add("invalid-feedback");
 };
 
-//Exportamos 
+// Exportamos
 export default validateLogin;
