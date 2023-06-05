@@ -5,7 +5,7 @@ const btnSignup = document.querySelector("[Signup-button]");
 const inputUsername = document.querySelector("#validationCustomUsername");
 const inputEmail = document.querySelector("#email");
 const inputPassword = document.querySelector("#validationPassword");
-const inputRetypedPassword = document.querySelector("#validationPassword");
+const inputRetypedPassword = document.querySelector("#validationPasswordAgain");
 
 const enableButton = () => {
     btnSignup.disabled = false;
