@@ -1,6 +1,6 @@
-export const checkIfUserAlreadyExists = (username) => {
-    const dataList = JSON.parse(localStorage.getItem("database")) || [];
+const dataList = JSON.parse(localStorage.getItem("database")) || [];
 
+export const checkIfUserAlreadyExists = (username) => {
     for (let i = 0; i < dataList.length; i++) {
         if (dataList[i].username === username) {
             return true;
@@ -10,8 +10,6 @@ export const checkIfUserAlreadyExists = (username) => {
 };
 
 export const checkIfEmailAlreadyExists = (email) => {
-    const dataList = JSON.parse(localStorage.getItem("database")) || [];
-
     for (let i = 0; i < dataList.length; i++) {
         if (dataList[i].email === email) {
             return true;

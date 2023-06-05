@@ -1,19 +1,22 @@
+const dataList = JSON.parse(localStorage.getItem("database")) || [];
+
 export const getUsername = () => {
-    const userData = localStorage.getItem("database");
-    if (userData) {
-        const data = JSON.parse(userData);
-        return data.username;
-    } else {
-        throw new Error("No data found");
+    for (let i = 0; i < dataList.length; i++) {
+        return dataList[i].username;
     }
+    throw new Error("El usuario no existe");
 };
 
 export const getEmail = () => {
-    const userData = localStorage.getItem("database");
-    if (userData) {
-        const data = JSON.parse(userData);
-        return data.email;
-    } else {
-        throw new Error("No data found");
+    for (let i = 0; i < dataList.length; i++) {
+        return dataList[i].email;
     }
+    throw new Error("El usuario no existe");
+};
+
+export const getPassword = () => {
+    for (let i = 0; i < dataList.length; i++) {
+        return dataList[i].password;
+    }
+    throw new Error("El usuario no existe");
 };

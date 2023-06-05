@@ -1,3 +1,6 @@
+import {getUsername, getPassword} from "../dataManagement/getData.js";
+
+const invalidUser = document.querySelector("[data-invalid-username]");
 const invalidPassword = document.querySelector("[data-password]");
 
 //Validaciones del login
@@ -11,78 +14,52 @@ const validateLogin = (e) =>{
     const password = document.getElementById('Password').value;
 
     //Call functions to validate username:
-    validateUsername(username);
-    validatePassword(password);
+    validateData(username, password);
 };
 
 //----------------------------------------------------------------------------
-//Validar usuario:
-const validateUsername = (user) => {
-    const invalidUser = document.querySelector("[data-invalid-username]");
+//Validar datos:
+const validateData = (user, password) => {
+   
+    //Verifiacmos que se a ingresado el user y el password
+    if (!user || ! password){
+        //Mostramos los mensajes correspondientes 
+        if (!user) {
+            invalidUser.innerHTML = "El nombre de usuario es obligatorio.";
+            invalidUser.classList.remove("invalid-feedback");
+          }
+        
+          if (!password) {
+            invalidPassword.innerHTML = 'La contraseña es obligatoria.';
+            invalidPassword.classList.remove("invalid-feedback");
+          }
+          return;
+    }
 
-    if(!user){
-        // Si no se proporciona un nombre de usuario, se elimina la clase de retroalimentación de error
+    if(user !== getUsername()){
+        // Si no existe ese usuario:
+        alert(getUsername());
+        invalidUser.innerHTML = "Usuario no encontrado";
         invalidUser.classList.remove("invalid-feedback");
+        return;
     }
-    else{
-        // Si se proporciona un nombre de usuario, se agrega la clase de retroalimentación de error
-        invalidUser.classList.add("invalid-feedback");
-    }
-};
 
-
-//Validar clave ingresada:
-const validatePassword = (password) => {
-
-    // Si no hay clave alguna:
-    if(!password){
-        invalidPassword.innerHTML = "La contraseña es obligatoria";
+    if(user === getUsername() && password !== getPassword()){
+        // Si no existe ese usuario:
+        alert(getPassword());
+        invalidPassword.innerHTML = "Contraseña incorrecta";
         invalidPassword.classList.remove("invalid-feedback");
         return;
     }
 
-    // Mostrar mensaje si la clave es demasiado corta:
-    if(checkPasswordLong(password)){
-        invalidPassword.innerHTML = "La contraseña es demasiado corta";
-        invalidPassword.classList.remove("invalid-feedback");
-        return;
-    }
+    alert("Inicio de sesión correcto. Bienvenido " + getUsername());
+    /*invalidUser.innerHTML = "";
+    invalidPassword.innerHTML = "";*/
+    invalidUser.classList.remove("invalid-feedback")
 
-    // Mensaje si la clave contiene espacios:
-    if(doesPasswordHasSpaces(password)){
-        invalidPassword.innerHTML = "La contraseña no debe contener espacios";
-        invalidPassword.classList.remove("invalid-feedback");
-        return;
-    }
-
-    // Mostrar mensaje si la clave no contiene caracteres especiales:
-    if(!doesPasswordHasChars(password)){
-        invalidPassword.innerHTML = "La contraseña debe contener al menos un caracter especial";
-        invalidPassword.classList.remove("invalid-feedback");
-        return;
-    }
-
-    // Si todas las condiciones se cumplen, eliminar el mensaje de error:
-    invalidPassword.innerHTML = "";
-    invalidPassword.classList.remove("invalid-feedback");
-};
-
-// Función para verificar longitud de clave:
-const checkPasswordLong = (password) => {
-    return password.length < 8;
-};
-
-// Función para verificar si la clave contiene espacios:
-const doesPasswordHasSpaces = (password) => {
-    return password.includes(" ");
-};
-
-// Función para verificar si la clave contiene caracteres especiales:
-const doesPasswordHasChars = (password) => {
-    const availableChars = "~`!@#$%^&*()_+={[}]|\\:;\"'<,>.?-";
-    const regex = new RegExp(`[${availableChars}]`);
-
-    return regex.test(password);
+    //Sirve para limpiar los input
+    document.getElementById('UserName').value = '';
+    document.getElementById('Password').value = '';
 };
 
 //Exportamos 
