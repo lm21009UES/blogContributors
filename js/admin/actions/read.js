@@ -10,7 +10,10 @@ const myTable = document.createElement("table");
 // Filas
 const tableRow = document.createElement("tr");
 
+
+
 // Encabezados
+const thCheckbox = document.createElement("th");
 const thUsername = document.createElement("th");
 const thEmail = document.createElement("th");
 const thPassword = document.createElement("th");
@@ -21,12 +24,14 @@ thEmail.textContent = "Correo";
 thPassword.textContent = "Clave";
 
 // Agregar los encabezados a la fila
+tableRow.appendChild(thCheckbox);
 tableRow.appendChild(thUsername);
 tableRow.appendChild(thEmail);
 tableRow.appendChild(thPassword);
 
 // Agregar la fila a la tabla
 myTable.appendChild(tableRow);
+
 
 /**
  * La función readData lee los datos almacenados en localStorage y los muestra en una tabla.
@@ -36,19 +41,27 @@ export const readData = () => {
     // Verificar si hay datos y agregarlos a la tabla
     if (dataList && dataList.length > 0) {
         for (let i = 0; i < dataList.length; i++) {
+
+            // Crear o agregar un checkbox a cada fila de la tabla
+            const checkBox = document.createElement("input");
+            checkBox.setAttribute("type", "checkbox");
+
             // Crear una nueva fila para cada elemento de datos
             const tableRow = document.createElement("tr");
 
+            const tdCheckBox = document.createElement("td");
             const tdUsername = document.createElement("td");
             const tdEmail = document.createElement("td");
             const tdPassword = document.createElement("td");
 
             // Asignar el contenido de los datos a las celdas correspondientes
+            tdCheckBox.appendChild(checkBox);
             tdUsername.textContent = dataList[i].username;
             tdEmail.textContent = dataList[i].email;
             tdPassword.textContent = dataList[i].password;
 
             // Agregar las celdas a la fila
+            tableRow.appendChild(tdCheckBox);
             tableRow.appendChild(tdUsername);
             tableRow.appendChild(tdEmail);
             tableRow.appendChild(tdPassword);
