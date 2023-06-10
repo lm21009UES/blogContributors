@@ -3,15 +3,55 @@ body{
     margin: 0;
     line-height:1.6;
 
-    background-image: url(../images/Fondo2Principal.png);
+    background-image: url(../images/Fondos-Principal/Fondo-Principal1.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
+    animation:animate 20s infinite ;
     /*Dando un color mas oscuro a la imagen de fondo*/
     background-color: rgb(50, 50, 50);
     background-blend-mode: soft-light ;
 
+}
+
+/*Fondo animado de la pagina principal*/
+@keyframes animate{
+    20%{
+        background-image:url(../images/Fondos-Principal/Fondo-Principal2.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+    }
+    40%{
+        background-image:url(../images/Fondos-Principal/Fondo-Principal3.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+    }
+    60%{
+        background-image:url(../images/Fondos-Principal/Fondo-Principal3.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+       
+    }
+    80%{
+        background-image:url(../images/Fondos-Principal/Fondo-Principal4.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+    }
+    100%{
+        background-image:url(../images/Fondos-Principal/Fondo-Principal5.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+    }
 }
 
 /*Definiendo el tamaño del logo*/
@@ -23,7 +63,7 @@ body{
 }
 
 h2{
-    color: #f3f3f3f3;
+    color:#f3f3f3f3 ;
     text-align: center;
     padding: 8rem;
     font-size: 3rem;
@@ -136,7 +176,7 @@ nav{
     }
 
     h2{
-        padding: 4rem;
+        padding: 5rem;
         font-size: 1.5rem;
         text-align: center;
     }
