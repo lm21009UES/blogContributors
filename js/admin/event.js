@@ -1,10 +1,11 @@
 import {readData} from "./actions/read.js";
-import createNewUser from "./actions/create.js";
+// import createNewUser from "./actions/create.js";
 
 const btnAddUser = document.querySelector("[add-user-button]");
 const btnEditUser = document.querySelector("[edit-info-button]");
 const btnMuteUser = document.querySelector("[mute-user-button]");
 const btnDeleteUser = document.querySelector("[delete-user-button]");
+const btnCancell = document.querySelector("[cancell-button]");
 
 document.addEventListener("DOMContentLoaded", function() {
     readData();
@@ -13,5 +14,6 @@ document.addEventListener("DOMContentLoaded", function() {
     btnDeleteUser.disabled = true;
 });
 
-// btnAdd.addEventListener('click', createNewUser);
-btnAddUser.addEventListener("click", createNewUser);
+btnCancell.addEventListener("click", function (){
+    window.location.reload();
+});
