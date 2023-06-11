@@ -6,28 +6,22 @@ const tableContainer = document.querySelector("[data-container]");
 
 // Tabla
 const myTable = document.createElement("table");
+myTable.classList.add("table", "table-bordered");
 
 // Filas
 const tableRow = document.createElement("tr");
 
-
-
 // Encabezados
-const thCheckbox = document.createElement("th");
 const thUsername = document.createElement("th");
 const thEmail = document.createElement("th");
-const thPassword = document.createElement("th");
 
 // Asignar texto a los encabezados
 thUsername.textContent = "Nombre de usuario";
 thEmail.textContent = "Correo";
-thPassword.textContent = "Clave";
 
 // Agregar los encabezados a la fila
-tableRow.appendChild(thCheckbox);
 tableRow.appendChild(thUsername);
 tableRow.appendChild(thEmail);
-tableRow.appendChild(thPassword);
 
 // Agregar la fila a la tabla
 myTable.appendChild(tableRow);
@@ -42,29 +36,19 @@ export const readData = () => {
     if (dataList && dataList.length > 0) {
         for (let i = 0; i < dataList.length; i++) {
 
-            // Crear o agregar un checkbox a cada fila de la tabla
-            const checkBox = document.createElement("input");
-            checkBox.setAttribute("type", "checkbox");
-
             // Crear una nueva fila para cada elemento de datos
             const tableRow = document.createElement("tr");
 
-            const tdCheckBox = document.createElement("td");
             const tdUsername = document.createElement("td");
             const tdEmail = document.createElement("td");
-            const tdPassword = document.createElement("td");
 
             // Asignar el contenido de los datos a las celdas correspondientes
-            tdCheckBox.appendChild(checkBox);
             tdUsername.textContent = dataList[i].username;
             tdEmail.textContent = dataList[i].email;
-            tdPassword.textContent = dataList[i].password;
 
             // Agregar las celdas a la fila
-            tableRow.appendChild(tdCheckBox);
             tableRow.appendChild(tdUsername);
             tableRow.appendChild(tdEmail);
-            tableRow.appendChild(tdPassword);
 
             // Agregar la fila a la tabla
             myTable.appendChild(tableRow);
