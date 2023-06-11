@@ -74,4 +74,3 @@ const createCheckBox = () => {
     myCheckBox.classList.add("form-check-input");
     return myCheckBox;
 };
-
