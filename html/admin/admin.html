@@ -112,7 +112,7 @@
         <button class="btn btn-warning mb-3" mute-user-button>
             Silenciar
         </button>
-        <button class="btn btn-info mb-3" edit-info-button>
+        <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal" edit-info-button>
             Editar
         </button>
         <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop" add-user-button>
@@ -158,6 +158,50 @@
                 <!--Button-->
                 <div class="d-grid mb-4">
                     <button type="submit" class="btn btn-primary" Signup-button>Agregar</button>
+                    <button type="button" class="btn btn-secondary mt-3" data-bs-dismiss="modal" cancell-button>Cerrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--Modal: editar usuario-->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background-color: rgb(29, 40, 83)">
+            <h2 class="text-center py-4 text-light">Editar datos de usuario</h2>
+            <!--Formulario de registro-->
+            <form action="#" class="action m-3">
+                <div class="mb-4">
+                    <label for="validationCustomUsername" class="form-label text-light">Nombre de usuario</label>
+                    <input type="text" class="form-control" id="editCustomUsername" style="background:rgba(220, 235, 241, 0.774);" onkeydown="enableButton()">
+                </div>
+                <div class="invalid-feedback" data-invalid-username style="color: rgb(230, 52, 138);">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="form-label text-light">Correo</label>
+                    <input type="email" class="form-control" id="editEmail" name="email" style="background:rgba(220, 235, 241, 0.774);" onkeydown="enableButton()">
+                </div>
+                <div class="invalid-feedback" data-invalid-email style="color: rgb(230, 52, 138);">
+                </div>
+                <div class="mb-4">
+                    <label for="validationPassword" class="form-label text-light">Contraseña</label>
+                    <input type="password" class="form-control" id="editPassword" style="background:rgba(220, 235, 241, 0.774);" name="Password" onkeydown="enableButton()">
+                </div>
+                <div class="invalid-feedback" data-invalid-password style="color: rgb(230, 52, 138);">
+                </div>
+                <div class="mb-4">
+                    <label for="validationPasswordAgain" class="form-label text-light">Confirmar contraseña</label>
+                    <input type="password" class="form-control" id="editPasswordAgain" style="background:rgba(220, 235, 241, 0.774);" name="Password"  onkeydown="enableButton()">
+                </div>
+                <div class="invalid-feedback" data-invalid-retyped-password style="color: rgb(230, 52, 138);">
+                </div>
+
+                <!--Button-->
+                <div class="d-grid mb-4">
+                    <button type="submit" class="btn btn-primary" confirm-button>Confirmar</button>
                     <button type="button" class="btn btn-secondary mt-3" data-bs-dismiss="modal" cancell-button>Cerrar</button>
                 </div>
             </form>
