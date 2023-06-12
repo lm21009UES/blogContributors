@@ -5,11 +5,17 @@ export const countCheckedCheckboxes = (checkboxes) => {
 
 // Función para obtener los índices de los checkboxes seleccionados
 export const checkIndexes = (checkboxes, checkedBoxIndexes) => {
-    // checkedIndexes.length = 0; // Reiniciar el array de índices seleccionados
     checkboxes.forEach((checkbox, index) => {
         if (checkbox.checked) {
-            if(!checkedBoxIndexes.includes(index)){
+            // Verificar si el índice ya existe en checkedBoxIndexes antes de agregarlo
+            if (!checkedBoxIndexes.includes(index)) {
                 checkedBoxIndexes.push(index);
+            }
+        } else {
+            // Si el checkbox no está marcado, eliminar el índice si existe en checkedBoxIndexes
+            const indexToRemove = checkedBoxIndexes.indexOf(index);
+            if (indexToRemove !== -1) {
+                checkedBoxIndexes.splice(indexToRemove, 1);
             }
         }
     });
