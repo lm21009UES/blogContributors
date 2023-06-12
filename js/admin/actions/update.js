@@ -1,3 +1,4 @@
+// Obtener datos de localStorage:
 const dataLocalStorage = JSON.parse(localStorage.getItem('database')) || [];
 
 // Obtener los elementos de entrada de nombre de usuario, correo electrónico, contraseña y contraseña repetida del documento HTML
