@@ -1,20 +1,17 @@
 // Importar la función readData del archivo read.js en la carpeta actions
-import { readData } from "./actions/read.js";
+import {readData} from "./actions/read.js";
 import {updateValues} from "./actions/update.js";
 import {deleteItems} from "./actions/delete.js";
-// import validateRegistry from "../validateRegistry/validate.js";
-// import {deleteItems, getItems} from "./actions/delete.js";
+import {checkIndexes, countCheckedCheckboxes} from "./actions/manageChecks.js";
 
 // Obtener los botones de editar usuario, silenciar usuario, eliminar usuario y cancelar del documento HTML
 const btnEditUser = document.querySelector("[edit-info-button]");
 const btnMuteUser = document.querySelector("[mute-user-button]");
 const btnDeleteUser = document.querySelector("[delete-user-button]");
-const btnCancell = document.querySelector("[cancell-button]");
+const btnCancell = document.querySelectorAll("[cancell-button]");
 
-const checkedBoxIndexes = []; // Array para almacenar los índices de los checkboxes seleccionados
-
-// Obtener los datos almacenados en localStorage
-const dataLocalStorage = JSON.parse(localStorage.getItem('database'));
+// Array para almacenar los índices de los checkboxes seleccionados
+const checkedBoxIndexes = [];
 
 const disableButtons = () => {
     // Deshabilitar los botones de editar usuario, silenciar usuario y eliminar usuario
@@ -37,33 +34,18 @@ document.addEventListener("DOMContentLoaded", function() {
     // Obtener todos los checkboxes del documento HTML
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
-    // Función para contar la cantidad de checkboxes seleccionados
-    const countCheckedCheckboxes = () => {
-        return [...checkboxes].filter(checkbox => checkbox.checked).length;
-    };
-
-    // Función para obtener los índices de los checkboxes seleccionados
-    const checkIndexes = () => {
-        // checkedIndexes.length = 0; // Reiniciar el array de índices seleccionados
-        checkboxes.forEach((checkbox, index) => {
-            if (checkbox.checked) {
-                if(!checkedBoxIndexes.includes(index)){
-                    checkedBoxIndexes.push(index);
-                }
-            }
-        });
-    };
-
     // Función para manejar el cambio de estado de los checkboxes
     const handleCheckboxChange = () => {
-        const checkedCount = countCheckedCheckboxes();
-        checkIndexes();
+        // Función para contar la cantidad de checkboxes seleccionados
+        const checkedCount = countCheckedCheckboxes(checkboxes);
+
+        // Función para obtener los índices de los checkboxes seleccionados
+        checkIndexes(checkboxes, checkedBoxIndexes);
 
         if (checkedCount === 0) {
             disableButtons();
         } else {
             enableButtons();
-
         }
     };
 
@@ -87,6 +69,8 @@ btnDeleteUser.addEventListener("click", function () {
 
 
 // Agregar un event listener al botón de cancelar para recargar la página
-btnCancell.addEventListener("click", function() {
-    window.location.reload();
+btnCancell.forEach(button => {
+    button.addEventListener("click", function() {
+        window.location.reload();
+    });
 });
