@@ -33,6 +33,3 @@ export const saveItems = (username, email, password) => {
     // Muestra un mensaje de completado
     alert("Registro completado");
 };
-
-
-

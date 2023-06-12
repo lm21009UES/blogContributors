@@ -63,7 +63,7 @@ btnDeleteUser.addEventListener("click", function () {
     deleteItems(checkedBoxIndexes);
 
     // Volver a leer los datos y actualizar la visualización
-    readData();
+    window.location.reload();
 });
 
 
