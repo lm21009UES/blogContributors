@@ -1,6 +1,7 @@
 // Importar la función readData del archivo read.js en la carpeta actions
 import { readData } from "./actions/read.js";
 import {updateValues} from "./actions/update.js";
+import {deleteItems} from "./actions/delete.js";
 // import validateRegistry from "../validateRegistry/validate.js";
 // import {deleteItems, getItems} from "./actions/delete.js";
 
@@ -106,21 +107,10 @@ btnEditUser.addEventListener("click", function (){
 });
 
 btnDeleteUser.addEventListener("click", function () {
-    // Recorrer los índices de los checkboxes seleccionados
-    for (let i = 0; i <= checkedBoxIndexes.length -1; i++) {
-        // Eliminar el elemento correspondiente al índice en dataLocalStorage
-        dataLocalStorage.splice(checkedBoxIndexes[i], 1);
-    }
-
-    // Actualizar los datos en el almacenamiento local
-    localStorage.setItem('database', JSON.stringify(dataLocalStorage));
+    deleteItems(checkedBoxIndexes);
 
     // Volver a leer los datos y actualizar la visualización
     readData();
-    // checkedBoxIndexes.splice(0, checkedBoxIndexes.length);
-
-    // Recargar la página
-    window.location.reload();
 });
 
 

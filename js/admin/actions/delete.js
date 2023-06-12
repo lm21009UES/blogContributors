@@ -1,16 +1,16 @@
-let myCheckedIndexes = [];
+// Obtener los datos almacenados en localStorage
+const dataLocalStorage = JSON.parse(localStorage.getItem('database'));
 
-export const getItems = (checkedIndexes) => {
-    myCheckedIndexes = checkedIndexes;
-};
-
-export const deleteItems = (checkedIndexes) => {
-    const row = document.querySelector("table");
-
-    for (let i = 0; i < checkedIndexes.length; i++) {
-        if (row) {
-            row.remove();
-        }
+export const deleteItems = (checkedBoxIndexes) => {
+    // Recorrer los índices de los checkboxes seleccionados
+    for (let i = 0; i <= checkedBoxIndexes.length -1; i++) {
+        // Eliminar el elemento correspondiente al índice en dataLocalStorage
+        dataLocalStorage.splice(checkedBoxIndexes[i], 1);
     }
-    return checkedIndexes = [];
+
+    // Actualizar los datos en el almacenamiento local
+    localStorage.setItem('database', JSON.stringify(dataLocalStorage));
+
+    // Recargar la página
+    window.location.reload();
 };
