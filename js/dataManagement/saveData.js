@@ -1,9 +1,10 @@
 import {checkIfUserAlreadyExists} from "./chekIfAreRepeated.js";
 import {checkIfEmailAlreadyExists} from "./chekIfAreRepeated.js";
 
+// Obtener datos previamente guardados:
+const dataList = JSON.parse(localStorage.getItem("database")) || [];
+
 export const saveItems = (username, email, password) => {
-    // Obtener datos previamente guardados:
-    const dataList = JSON.parse(localStorage.getItem("database")) || [];
 
     // Crea un objeto con el nombre de usuario, correo electrónico y contraseña
     const data = {
@@ -32,4 +33,17 @@ export const saveItems = (username, email, password) => {
 
     // Muestra un mensaje de completado
     alert("Registro completado");
+};
+
+export const updateItems = (username, email, password, i) => {
+
+    dataList[i].username = username;
+    dataList[i].email = email;
+    dataList[i].password = password;
+
+    // Guarda la cadena JSON en el almacenamiento local con la clave "database"
+    localStorage.setItem("database", JSON.stringify(dataList));
+
+    // Muestra un mensaje de completado
+    alert("Actualización de datos completada");
 };

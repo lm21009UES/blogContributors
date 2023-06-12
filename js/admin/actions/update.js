@@ -1,4 +1,6 @@
 // Obtener datos de localStorage:
+import {getUpdatedIndex, validateUpdate} from "../../validateRegistry/validate.js";
+
 const dataLocalStorage = JSON.parse(localStorage.getItem('database')) || [];
 
 // Obtener los elementos de entrada de nombre de usuario, correo electrónico, contraseña y contraseña repetida del documento HTML
@@ -25,19 +27,15 @@ export const updateValues = (checkedBoxIndexes) => {
             inputEmail.value = data.email;
             inputPassword.value = data.password;
             inputRetypedPassword.value = data.password;
+            getUpdatedIndex(selectedIndex);
 
             confirmButton.addEventListener("click", function (){
-                update(inputUsername.value, inputEmail.value, inputPassword.value, selectedIndex, i);
+                validateUpdate(inputUsername.value,
+                    inputEmail.value,
+                    inputPassword.value,
+                    inputRetypedPassword.value
+                );
             });
         }
     }
-};
-
-const update = (username, email, password, i) => {
-    dataLocalStorage[i].username = username;
-    dataLocalStorage[i].email = email;
-    dataLocalStorage[i].password = password;
-
-    // Guarda los datos actualizados en localStorage
-    localStorage.setItem('database', JSON.stringify(dataLocalStorage));
 };
