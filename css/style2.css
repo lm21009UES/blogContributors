@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 20px;
     /*background:linear-gradient(to left,rgb(145, 52, 189),rgb(41, 99, 160)) ;*/
-    background-image: url(Fondo1.jpg);
+    background-image: url(../images/Fondo1.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -79,7 +79,7 @@ Diseño del input de cargar achivo*/
 }
 
 .formatear__formatear-button{
-    background: black url(folder.png) 4px center/25px no-repeat ;
+    background: black url(../images/folder.png) 4px center/25px no-repeat ;
     border: 2px solid rgb(146, 23, 146); 
     color: #FFF;
     white-space: nowrap;
