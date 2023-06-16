@@ -29,7 +29,7 @@ const validateRegistry = (e) =>{
     }
 };
 
-export const validateUpdate = (username, email, password, retypedPassword) =>{
+export const validateUpdate = (username, email, password, retypedPassword, rol) =>{
 
     //Call function to validate username:
     checkIfUsernameIsCorrect(username);
@@ -37,7 +37,7 @@ export const validateUpdate = (username, email, password, retypedPassword) =>{
     checkIfPasswordIsCorrect(password, retypedPassword);
 
     if(checkIfUsernameIsCorrect(username) && checkIfEmailIsCorrect(email) && checkIfPasswordIsCorrect(password, retypedPassword)){
-        updateItems(username, email, password, i);
+        updateItems(username, email, password, i, rol);
 
         // Clear the input fields
         document.querySelector("#editCustomUsername").value = "";

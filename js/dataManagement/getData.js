@@ -39,8 +39,21 @@ export const isLoginOk = (username, password) => {
     for (let i = 0; i < dataList.length; i++) {
         // Comprobar si el nombre de usuario y la contraseña coinciden con los proporcionados
         if (dataList[i].username === username && dataList[i].password === password) {
-            return true; // Si el nombre de usuario y la contraseña coinciden, devolver verdadero
+            // Si el nombre de usuario y la contraseña coinciden, devolver verdadero
+            return true;
         }
     }
     return false; // Si el nombre de usuario y la contraseña no coinciden, devolver falso
+};
+
+export const isAdmin = (username) => {
+    for (let i = 0; i < dataList.length; i++) {
+        // Comprobar si el nombre de usuario y la contraseña coinciden con los proporcionados
+        if (dataList[i].username === username && dataList[i].rol === "Administrador") {
+            // Si el rol es de admin
+            return true;
+        }
+    }
+    // Si es usuario normal
+    return false;
 };

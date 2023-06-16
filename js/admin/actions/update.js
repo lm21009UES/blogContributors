@@ -8,6 +8,7 @@ const inputUsername = document.querySelector("#editCustomUsername");
 const inputEmail = document.querySelector("#editEmail");
 const inputPassword = document.querySelector("#editPassword");
 const inputRetypedPassword = document.querySelector("#editPasswordAgain");
+const selectValue = document.querySelector("[data-user-rol]");
 
 const confirmButton = document.querySelector("[confirm-button]");
 
@@ -27,13 +28,16 @@ export const updateValues = (checkedBoxIndexes) => {
             inputEmail.value = data.email;
             inputPassword.value = data.password;
             inputRetypedPassword.value = data.password;
+            selectedIndex.value = data.rol;
             getUpdatedIndex(selectedIndex);
 
             confirmButton.addEventListener("click", function (){
-                validateUpdate(inputUsername.value,
+                validateUpdate(
+                    inputUsername.value,
                     inputEmail.value,
                     inputPassword.value,
-                    inputRetypedPassword.value
+                    inputRetypedPassword.value,
+                    selectValue.value
                 );
             });
         }
