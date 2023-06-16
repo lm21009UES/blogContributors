@@ -1,7 +1,8 @@
-import {saveItems} from "../dataManagement/saveData.js";
+import {saveItems, updateItems} from "../dataManagement/saveData.js";
 import {checkIfUsernameIsCorrect} from "./validations/validateUsername.js";
 import {checkIfEmailIsCorrect} from "./validations/validateEmail.js";
 import {checkIfPasswordIsCorrect} from "./validations/validatePassword.js";
+let i = 0;
 
 const validateRegistry = (e) =>{
     e.preventDefault();
@@ -27,5 +28,27 @@ const validateRegistry = (e) =>{
         document.querySelector("#validationPasswordAgain").value = "";
     }
 };
+
+export const validateUpdate = (username, email, password, retypedPassword) =>{
+
+    //Call function to validate username:
+    checkIfUsernameIsCorrect(username);
+    checkIfEmailIsCorrect(email);
+    checkIfPasswordIsCorrect(password, retypedPassword);
+
+    if(checkIfUsernameIsCorrect(username) && checkIfEmailIsCorrect(email) && checkIfPasswordIsCorrect(password, retypedPassword)){
+        updateItems(username, email, password, i);
+
+        // Clear the input fields
+        document.querySelector("#editCustomUsername").value = "";
+        document.querySelector("#editEmail").value = "";
+        document.querySelector("#editPassword").value = "";
+        document.querySelector("#editPasswordAgain").value = "";
+    }
+};
+
+export const getUpdatedIndex = (index) => {
+    i = index;
+}
 
 export default validateRegistry;
