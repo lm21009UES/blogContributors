@@ -9,6 +9,7 @@ const btnEditUser = document.querySelector("[edit-info-button]");
 const btnMuteUser = document.querySelector("[mute-user-button]");
 const btnDeleteUser = document.querySelector("[delete-user-button]");
 const btnCancell = document.querySelectorAll("[cancell-button]");
+const btnNewPost = document.querySelector("[btn-new-post]");
 
 // Array para almacenar los índices de los checkboxes seleccionados
 const checkedBoxIndexes = [];
@@ -72,4 +73,8 @@ btnCancell.forEach(button => {
     button.addEventListener("click", function (){
         window.location.reload();
     });
+});
+
+btnNewPost.addEventListener("click", function () {
+    window.location.href = "../creaPost.html";
 });
