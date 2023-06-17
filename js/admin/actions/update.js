@@ -47,3 +47,7 @@ export const updateValues = (checkedBoxIndexes) => {
         }
     }
 };
+
+export const updatePosts = () => {
+//
+};
