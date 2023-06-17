@@ -1,5 +1,6 @@
 import {checkIfUserAlreadyExists} from "./chekIfAreRepeated.js";
 import {checkIfEmailAlreadyExists} from "./chekIfAreRepeated.js";
+import {userHasLoggedIn} from "./manageSessions.js";
 
 // Obtener datos previamente guardados:
 const dataList = JSON.parse(localStorage.getItem("database")) || [];
@@ -51,8 +52,11 @@ export const saveItems = (username, email, password) => {
         // Guarda la cadena JSON en el almacenamiento local con la clave "database"
         localStorage.setItem("database", JSON.stringify(dataList));
 
-        window.location = "../../html/site.html";
+        // Quién ha iniciado la sesión?
+        userHasLoggedIn(username);
 
+        // Enviar a la página correspondiente
+        window.location = "../../html/site.html";
     }
 };
 

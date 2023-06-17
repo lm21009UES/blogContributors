@@ -3,6 +3,7 @@ import {readData} from "./actions/read.js";
 import {updateValues} from "./actions/update.js";
 import {deleteItems} from "./actions/delete.js";
 import {checkIndexes, countCheckedCheckboxes} from "./actions/manageCheckBoxes.js";
+import {getUserWhoHasLoggedIn} from "../dataManagement/manageSessions.js";
 
 // Obtener los botones de editar usuario, silenciar usuario, eliminar usuario y cancelar del documento HTML
 const btnEditUser = document.querySelector("[edit-info-button]");
@@ -10,6 +11,8 @@ const btnMuteUser = document.querySelector("[mute-user-button]");
 const btnDeleteUser = document.querySelector("[delete-user-button]");
 const btnCancell = document.querySelectorAll("[cancell-button]");
 const btnNewPost = document.querySelector("[btn-new-post]");
+
+const adminName = document.querySelector("[admin-name]");
 
 // Array para almacenar los índices de los checkboxes seleccionados
 const checkedBoxIndexes = [];
@@ -29,6 +32,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // Llamar a la función readData para leer los datos
     readData();
     disableButtons();
+
+    adminName.textContent = getUserWhoHasLoggedIn();
 });
 
 document.addEventListener("DOMContentLoaded", function() {
