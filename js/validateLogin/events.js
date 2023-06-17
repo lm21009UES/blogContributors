@@ -5,3 +5,4 @@ import validateLogin from "./validate.js";
 const btnIngresar = document.querySelector('[Ingresar]');
 //Evento del button
 btnIngresar.addEventListener('click', validateLogin);
+

@@ -44,9 +44,11 @@ const validateData = (user, password) => {
 
     if(isAdmin(user)) {
         window.location.href = "../../html/admin/admin.html";
+        makeLogIn(user);
     }
     else{
         window.location.href = "../../html/site.html";
+        makeLogIn(user);
     }
 
     document.getElementById("UserName").value = "";
