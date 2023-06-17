@@ -1,0 +1,107 @@
+
+@media(max-width:1199px) {
+
+    .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        text-align: center;
+    }
+    .row{
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .newPost{
+        width: 900px; 
+    }
+
+    .Vista{
+        width: 28rem;
+        height: 27rem;
+        margin-left: 250px;
+        margin-bottom: 15px;
+    }
+
+    .IMGVista img{
+        width: 24rem;
+        height: 20rem;
+        border-radius: 4px;
+        margin-top: 10px;
+    }
+
+    #post{
+        width: 680px;
+    }
+
+    #title{
+        width: 600px;
+    }
+
+}
+
+/*Responsive dispositivos moviles*/
+@media (max-width:769px){
+    .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        text-align: center;
+    }
+
+    .row{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+    }
+
+    body{
+        background-image: url(../images/IMG-POST/Fondo-Post2.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        transition: 0.5s;
+    }
+
+    .newPost{
+        width: 400px; 
+    }
+
+    .newPost span{
+        color: rgb(68, 60, 119);
+    }
+
+    h2{
+        color: rgb(68, 60, 119);
+    }
+    .Vista{
+        width: 24.6rem;
+        height: 27rem;
+        margin-left: 0;
+    }
+
+    .IMGVista img{
+        width: 21rem;
+        height: 20rem;
+        border-radius: 4px;
+        margin-top: 10px;
+    }
+
+    #post{
+        width: 340px;
+    }
+
+    #title{
+        width: 300px;
+    }
+    
+}
+
