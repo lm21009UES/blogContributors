@@ -25,9 +25,8 @@ const readItems = () => {
                 itemList.splice(i,1);
             }
         }
-        localStorage.clear();
         localStorage.setItem('post', JSON.stringify(itemList));
-        window.alert('Se ha eliminado un post, recargue la pagina');
+        window.location.reload();
     });
     });
 }
