@@ -17,7 +17,7 @@
     }
 
     .newPost{
-        width: 900px; 
+        width: 900px;
     }
 
     .Vista{
@@ -63,7 +63,7 @@
     }
 
     body{
-        background-image: url(../images/Fondo2-Responsive.jpg);
+        background-image: url(../images/IMG-POST/Fondo-Post2.png);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
@@ -72,7 +72,15 @@
     }
 
     .newPost{
-        width: 400px; 
+        width: 400px;
+    }
+
+    .newPost span{
+        color: rgb(68, 60, 119);
+    }
+
+    h2{
+        color: rgb(68, 60, 119);
     }
     .Vista{
         width: 24.6rem;
@@ -94,6 +102,5 @@
     #title{
         width: 300px;
     }
-    
-}
 
+}
