@@ -35,7 +35,7 @@
             </li>
 
             <li>
-                <button class="salir">
+                <button class="salir" log-out>
                     <a href="#">
                         <span><i class="fa-solid fa-right-from-bracket text-light"></i> Logout</span>
                     </a>
@@ -198,7 +198,11 @@
                 </div>
                 <div class="invalid-feedback" data-invalid-retyped-password style="color: rgb(230, 52, 138);">
                 </div>
-
+                <label class="form-label text-light">Cambiar rol de usuario</label>
+                <select class="form-select mb-4" aria-label="Default select example" data-user-rol>
+                    <option value="1">Usuario</option>
+                    <option value="2">Administrador</option>
+                </select>
                 <!--Button-->
                 <div class="d-grid mb-4">
                     <button type="submit" class="btn btn-primary" confirm-button>Confirmar</button>

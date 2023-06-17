@@ -1,4 +1,4 @@
-import { isLoginOk } from "../dataManagement/getData.js";
+import {isAdmin, isLoginOk} from "../dataManagement/getData.js";
 
 const invalidUser = document.querySelector("[data-invalid-username]");
 const invalidPassword = document.querySelector("[data-password]");
@@ -42,11 +42,11 @@ const validateData = (user, password) => {
         return;
     }
 
-    alert("Inicio de sesión correcto. Bienvenido, " + user);
-    document.getElementById("UserName").value = "";
-    document.getElementById('Password').value = "";
-    invalidUser.classList.remove("invalid-feedback");
-    invalidPassword.classList.add("invalid-feedback");
+    if (isAdmin(user)) {
+        window.location = "../../html/admin/admin.html";
+    } else {
+        window.location = "../../html/site.html";
+    }
 };
 
 // Exportamos
