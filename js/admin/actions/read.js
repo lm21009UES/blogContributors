@@ -20,10 +20,7 @@ const thUserRol = document.createElement("th");
 // Asignar texto a los encabezados
 thUsername.textContent = "Nombre de usuario";
 thEmail.textContent = "Correo";
-<<<<<<< HEAD
 thUserRol.textContent = "Rol";
-=======
->>>>>>> john
 
 // Agregar los encabezados a la fila
 tableRow.appendChild(thCheckBox);
@@ -50,29 +47,19 @@ export const readData = () => {
             const tdCheckBox = document.createElement("td");
             const tdUsername = document.createElement("td");
             const tdEmail = document.createElement("td");
-<<<<<<< HEAD
             const tdUserRol = document.createElement("td");
-=======
-            const tdPromoteUser = document.createElement("td");
->>>>>>> john
 
             // Asignar el contenido de los datos a las celdas correspondientes
             tdCheckBox.appendChild(createCheckBox());
             tdUsername.textContent = dataList[i].username;
             tdEmail.textContent = dataList[i].email;
-<<<<<<< HEAD
             tdUserRol.textContent = dataList[i].rol;
-=======
->>>>>>> john
 
             // Agregar las celdas a la fila
             tableRow.appendChild(tdCheckBox);
             tableRow.appendChild(tdUsername);
             tableRow.appendChild(tdEmail);
-<<<<<<< HEAD
             tableRow.appendChild(tdUserRol);
-=======
->>>>>>> john
 
             // Agregar la fila a la tabla
             myTable.appendChild(tableRow);
