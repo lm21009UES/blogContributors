@@ -6,6 +6,9 @@ const dataList = JSON.parse(localStorage.getItem("database")) || [];
 let rootUserAlreadyCreated = false;
 
 const saveRootUser = () => {
+
+
+
     const rootData = {
         username: "root",
         email: "administrator@gmail.com",
@@ -22,36 +25,56 @@ const saveRootUser = () => {
 
 export const saveItems = (username, email, password) => {
 
-    saveRootUser();
+    if(dataList.length === 0){
+        // El primer usuario registrado ha de ser el admin supremo
+        const rootData = {
+            username: username,
+            email: email,
+            password: password,
+            rol: "root"
+        }
 
-    // Crea un objeto con el nombre de usuario, correo electrónico y contraseña
-    const data = {
-        username: username,
-        email: email,
-        password: password,
-        rol: "Usuario"
-    };
+        // Almacenar
+        dataList.push(rootData);
 
-    // Comprobar si el usuario ya existe
-    if (checkIfUserAlreadyExists(username)) {
-        alert("Este usuario ya existe");
-        return;
+        // Guarda la cadena JSON en el almacenamiento local con la clave "database"
+        localStorage.setItem("database", JSON.stringify(dataList));
+
+        window.location = "../../html/admin/admin.html";
     }
 
-    // Comprobar si el correo ya existe
-    if (checkIfEmailAlreadyExists(email)) {
-        alert("Este correo ya existe");
-        return;
+    else{
+        // Crea un objeto con el nombre de usuario, correo electrónico y contraseña
+        const data = {
+            username: username,
+            email: email,
+            password: password,
+            rol: "Usuario"
+        };
+
+        // Comprobar si el usuario ya existe
+        if (checkIfUserAlreadyExists(username)) {
+            alert("Este usuario ya existe");
+            return;
+        }
+
+        // Comprobar si el correo ya existe
+        if (checkIfEmailAlreadyExists(email)) {
+            alert("Este correo ya existe");
+            return;
+        }
+
+        // Almacenar
+        dataList.push(data);
+
+        // Guarda la cadena JSON en el almacenamiento local con la clave "database"
+        localStorage.setItem("database", JSON.stringify(dataList));
+
+        window.location = "../../html/site.html";
+
     }
 
-    // Almacenar
-    dataList.push(data);
 
-    // Guarda la cadena JSON en el almacenamiento local con la clave "database"
-    localStorage.setItem("database", JSON.stringify(dataList));
-
-    // Muestra un mensaje de completado
-    alert("Registro completado");
 };
 
 export const updateItems = (username, email, password, i, rol) => {

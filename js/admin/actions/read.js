@@ -38,7 +38,7 @@ export const readData = () => {
 
     // Verificar si hay datos y agregarlos a la tabla
     if (dataList && dataList.length > 0) {
-        for (let i = 1; i < dataList.length; i++) {
+        for (let i = 0; i < dataList.length; i++) {
 
             // Crear una nueva fila para cada elemento de datos
             const tableRow = document.createElement("tr");

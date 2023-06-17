@@ -4,8 +4,15 @@ const dataLocalStorage = JSON.parse(localStorage.getItem('database'));
 export const deleteItems = (checkedBoxIndexes) => {
     // Recorrer los índices de los checkboxes seleccionados
     for (let i = 0; i <= checkedBoxIndexes.length -1; i++) {
-        // Eliminar el elemento correspondiente al índice en dataLocalStorage
-        dataLocalStorage.splice(checkedBoxIndexes[i], 1);
+
+        if(dataLocalStorage[i].rol === "Administrador" || dataLocalStorage[i].rol === "root"){
+            alert("¡¡No podés eliminar un administrador!!");
+        }
+
+        else{
+            // Eliminar el elemento correspondiente al índice en dataLocalStorage
+            dataLocalStorage.splice(checkedBoxIndexes[i], 1);
+        }
     }
 
     // Actualizar los datos en el almacenamiento local

@@ -8,7 +8,7 @@ const inputUsername = document.querySelector("#editCustomUsername");
 const inputEmail = document.querySelector("#editEmail");
 const inputPassword = document.querySelector("#editPassword");
 const inputRetypedPassword = document.querySelector("#editPasswordAgain");
-const selectValue = document.querySelector("[data-user-rol]");
+const userRol = document.querySelector("[data-user-rol]");
 
 const confirmButton = document.querySelector("[confirm-button]");
 
@@ -17,10 +17,10 @@ export const updateValues = (checkedBoxIndexes) => {
     for (let i = 0; i <= checkedBoxIndexes.length - 1; i++) {
 
         // Obtener el índice del elemento seleccionado
-        const selectedIndex = checkedBoxIndexes[i];
+        const index = checkedBoxIndexes[i];
 
         // Obtener el elemento correspondiente a través del índice
-        const data = dataLocalStorage[selectedIndex];
+        const data = dataLocalStorage[index];
 
         if (data) {
             // Asignar los valores a los input correspondientes
@@ -28,16 +28,20 @@ export const updateValues = (checkedBoxIndexes) => {
             inputEmail.value = data.email;
             inputPassword.value = data.password;
             inputRetypedPassword.value = data.password;
-            selectedIndex.value = data.rol;
-            getUpdatedIndex(selectedIndex);
+            userRol.value = data.rol;
+
+            if(data.rol === "root"){
+                return;
+            }
 
             confirmButton.addEventListener("click", function (){
+                getUpdatedIndex(index);
                 validateUpdate(
                     inputUsername.value,
                     inputEmail.value,
                     inputPassword.value,
                     inputRetypedPassword.value,
-                    selectValue.value
+                    userRol.options[userRol.selectedIndex].text
                 );
             });
         }
