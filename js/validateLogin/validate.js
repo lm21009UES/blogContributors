@@ -46,9 +46,9 @@ const validateData = (user, password) => {
     userHasLoggedIn(user);
 
     if (isAdmin(user)) {
-        window.location = "../blogContributors/html/admin/admin.html";
+        window.location = "/blogContributors/html/admin/admin.html";
     } else {
-        window.location = "../blogContributors/html/site.html";
+        window.location = "/blogContributors/html/site.html";
     }
 };
 
