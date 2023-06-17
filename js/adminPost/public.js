@@ -3,6 +3,10 @@ import {isAdmin} from "../dataManagement/getData.js";
 
 const username = getUserWhoHasLoggedIn();
 
+document.querySelector("[reload-page]").addEventListener("click", function () {
+    window.location.reload();
+});
+
 const readItems = () => {
     const contenedor = document.querySelector("#Creando");
     const itemList = JSON.parse(localStorage.getItem("post")) || [];
@@ -130,9 +134,16 @@ const crearItem = ({id, img, title, description,fecha}) => {
     divT4.appendChild(a2);
     divT4.appendChild(a3);
 
+    const addNewPost = document.querySelector("[new-post]");
+
     if(isAdmin(username)){
         divT4.appendChild(editPostButton);
         divT4.appendChild(deletePostButton);
+
+        addNewPost.classList.remove("d-none");
+        addNewPost.addEventListener("click", function () {
+            window.location.href = "../../html/CreaPost.html";
+        })
     }
 
     const divT5 = document.createElement('div');
