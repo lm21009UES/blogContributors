@@ -1,4 +1,7 @@
 import {getUserWhoHasLoggedIn} from "../dataManagement/manageSessions.js";
+import {isAdmin} from "../dataManagement/getData.js";
+
+const username = getUserWhoHasLoggedIn();
 
 const readItems = () => {
     const contenedor = document.querySelector("#Creando");
@@ -48,7 +51,7 @@ const crearItem = ({id, img, title, description,fecha}) => {
     const divT2 = document.createElement('div');
     const h6 = document.createElement('h6');
     h6.setAttribute('class','fw-bold mb-1 purple');
-    h6.textContent = getUserWhoHasLoggedIn();
+    h6.textContent = username;
     const p = document.createElement('p');
     p.setAttribute('class','text-muted small mb-0')
     p.textContent='CINEBOX '+fecha;
@@ -111,24 +114,26 @@ const crearItem = ({id, img, title, description,fecha}) => {
     pi3.textContent='Compartir';
     a3.appendChild(i3);
     a3.appendChild(pi3);
-
     
-    const button4=document.createElement('button');
-    button4.setAttribute('class','edit');
-    button4.setAttribute('id',id);
-    button4.textContent='Editar';
+    const editPostButton=document.createElement('button');
+    editPostButton.setAttribute('class','edit');
+    editPostButton.setAttribute('id',id);
+    editPostButton.textContent='Editar';
 
-    const buttonD=document.createElement('button');
-    buttonD.setAttribute('class','delete');
-    buttonD.setAttribute('id',id);
-    buttonD.textContent='Eliminar';
+    const deletePostButton=document.createElement('button');
+    deletePostButton.setAttribute('class','delete');
+    deletePostButton.setAttribute('id',id);
+    deletePostButton.textContent='Eliminar';
     //a4.appendChild(pi4);
 
     divT4.appendChild(a);
     divT4.appendChild(a2);
     divT4.appendChild(a3);
-    divT4.appendChild(button4);
-    divT4.appendChild(buttonD);
+
+    if(isAdmin(username)){
+        divT4.appendChild(editPostButton);
+        divT4.appendChild(deletePostButton);
+    }
 
     const divT5 = document.createElement('div');
     divT5.setAttribute('class', 'card-footer border-0');
