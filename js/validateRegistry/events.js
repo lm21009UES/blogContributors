@@ -22,3 +22,4 @@ btnSignup.addEventListener("click", validateRegistry);
 inputUsername.addEventListener("keydown", enableButton);
 inputEmail.addEventListener("keydown", enableButton);
 inputPassword.addEventListener("keydown", enableButton);
+inputRetypedPassword.addEventListener("keydown", enableButton);

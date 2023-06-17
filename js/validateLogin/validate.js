@@ -42,17 +42,11 @@ const validateData = (user, password) => {
         return;
     }
 
-    if(isAdmin(user)) {
-        window.location.href = "../../html/admin/admin.html";
+    if (isAdmin(user)) {
+        window.location = "../../html/admin/admin.html";
+    } else {
+        window.location = "../../html/site.html";
     }
-    else{
-        window.location.href = "../../html/site.html";
-    }
-
-    document.getElementById("UserName").value = "";
-    document.getElementById('Password').value = "";
-    invalidUser.classList.remove("invalid-feedback");
-    invalidPassword.classList.add("invalid-feedback");
 };
 
 // Exportamos
