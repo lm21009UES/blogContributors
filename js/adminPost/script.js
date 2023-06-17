@@ -28,19 +28,19 @@ Array.from(files).forEach(
 //-------------------------------------------------------------
 
 function uploadPhoto() {
-  var fileInput = document.getElementById('fileInput');
-  var file = fileInput.files[0];
+  let fileInput = document.getElementById('fileInput');
+    let file = fileInput.files[0];
 
-  if (file) {
-      var reader = new FileReader();
+    if (file) {
+      let reader = new FileReader();
 
       reader.onload = function(e) {
-          var photoData = e.target.result;
+          let photoData = e.target.result;
           localStorage.setItem('photo', photoData);
           console.log('Foto subida exitosamente');
 
           // Mostrar la foto en el formulario
-          var photoPreview = document.getElementById('photoPreview');
+          let photoPreview = document.getElementById('photoPreview');
           photoPreview.src = photoData;
       }
 
@@ -64,10 +64,10 @@ btn.addEventListener('click',function(){
   const descripcion = document.querySelector('#post');
   const itemList = JSON.parse(localStorage.getItem("post")) || [];
   // crea un nuevo objeto `Date`
-  var today = new Date();
+  let today = new Date();
  
   // obtener la fecha y la hora
-  var now = today.toLocaleString();
+  let now = today.toLocaleString();
   const lst = {
     id: uuid.v4(),
     img: photoPreview.src,
@@ -76,12 +76,14 @@ btn.addEventListener('click',function(){
     fecha: now,
   }
   itemList.unshift(lst);
-  localStorage.clear();
-  localStorage.setItem('post', JSON.stringify(itemList))
+  localStorage.removeItem("post");
+  localStorage.removeItem("photo");
+  localStorage.setItem('post', JSON.stringify(itemList));
   titulo.value = '';
   descripcion.value = '';
-  var photo = document.querySelector("#photoPreview");
+  let photo = document.querySelector("#photoPreview");
   photo.src = "";
-  var fileInput = document.getElementById('select').textContent='Ningun archivo seleccionado';
+  let fileInput = document.getElementById('select').textContent='Ningun archivo seleccionado';
   window.alert('Se ha creado el post');
+  window.location.href = "site.html";
 });

@@ -1,3 +1,5 @@
+import {getUserWhoHasLoggedIn} from "../dataManagement/manageSessions.js";
+
 const readItems = () => {
     const contenedor = document.querySelector("#Creando");
     const itemList = JSON.parse(localStorage.getItem("post")) || [];
@@ -25,9 +27,8 @@ const readItems = () => {
                 itemList.splice(i,1);
             }
         }
-        localStorage.clear();
         localStorage.setItem('post', JSON.stringify(itemList));
-        window.alert('Se ha eliminado un post, recargue la pagina');
+        window.location.reload();
     });
     });
 }
@@ -47,7 +48,7 @@ const crearItem = ({id, img, title, description,fecha}) => {
     const divT2 = document.createElement('div');
     const h6 = document.createElement('h6');
     h6.setAttribute('class','fw-bold mb-1 purple');
-    h6.textContent='Erick Adony';
+    h6.textContent = getUserWhoHasLoggedIn();
     const p = document.createElement('p');
     p.setAttribute('class','text-muted small mb-0')
     p.textContent='CINEBOX '+fecha;
