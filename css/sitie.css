@@ -1,0 +1,18 @@
+/*Haciendo que las imagenes que se suban al post se adapten*/
+
+.IMGPost{
+    width: 30rem;
+    height: 21rem; 
+    border-radius: 6px;
+    margin-left: 146px;
+     
+}
+
+@media (max-width:769px){
+    .IMGPost{
+        width: 27rem;
+        height: 20rem; 
+        margin-left: 0rem;
+    }
+  
+}

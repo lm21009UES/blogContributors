@@ -1,9 +1,10 @@
-
 //-------------------------------------------------------------
 //Para cuando se eleije un archivo
 
 //Creamos una const donde llamamos a formatear
 const files = document.querySelectorAll('.formatear');
+//establecemos esta const en false  para ver si se ha caragdo la imagen 
+let imagenCargada = false;
 
 //Creamos un array para iterar 1 por 1 cada input de tipo file
 Array.from(files).forEach(
@@ -20,7 +21,17 @@ Array.from(files).forEach(
         span.innerHTML = 'No se ha seleccionado ningún archivo'
       }
       else{
-        span.innerHTML = f.files[0].name;
+        //Validando si la imagen fue seleccionada
+        const archivo = f.files[0];
+        const tipoImagen = archivo.type.split('/')[0];
+
+        if(tipoImagen !== 'image'){
+          span.innerHTML = 'Por favor, seleccione un archivo de imagen válido.';
+          imagenCargada =false;
+        }else {
+          span.innerHTML = f.files[0].name;
+          imagenCargada = true;
+        }
       }
     });
   }
@@ -50,6 +61,8 @@ function uploadPhoto() {
   }
 }
 
+//-------------------------------------------------------------
+
 // Cargar la foto desde el almacenamiento local cuando se carga la página
 /*window.onload = function() {
   var photoData = localStorage.getItem('photo');
@@ -58,11 +71,21 @@ function uploadPhoto() {
     photoPreview.src = photoData;
   }
 }*/
+
+//-------------------------------------------------------------
 const btn = document.querySelector("#public");
 btn.addEventListener('click',function(){
   const titulo = document.querySelector('#title');
   const descripcion = document.querySelector('#post');
+
+   //Verificando titulo, descripcion imagen del post no este vacio
+   if (titulo.value.trim() === '' || descripcion.value.trim() === '' || !imagenCargada) {
+    window.alert('Por favor,escriba y cargue una imagen antes de publicar.');
+    return;
+  }
+
   const itemList = JSON.parse(localStorage.getItem("post")) || [];
+  const UserInLine = JSON.parse(localStorage.getItem("sessions")) || [];
   // crea un nuevo objeto `Date`
   let today = new Date();
  
@@ -74,6 +97,7 @@ btn.addEventListener('click',function(){
     title: titulo.value,
     description: descripcion.value,
     fecha: now,
+    creador: UserInLine.username
   }
   itemList.unshift(lst);
   localStorage.removeItem("post");

@@ -52,12 +52,13 @@ export const saveItems = (username, email, password) => {
         // Guarda la cadena JSON en el almacenamiento local con la clave "database"
         localStorage.setItem("database", JSON.stringify(dataList));
 
-        // Quién ha iniciado la sesión?
-        userHasLoggedIn(username);
+        
 
         // Enviar a la página correspondiente
         window.location = "../../html/site.html";
     }
+    // Quién ha iniciado la sesión?
+    userHasLoggedIn(username);
 };
 
 export const updateItems = (username, email, password, i, rol) => {

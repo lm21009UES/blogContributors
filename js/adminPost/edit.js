@@ -13,6 +13,7 @@ itemList.forEach(element => {
 });
 const files = document.querySelectorAll('.formatear');
 
+//---------------------------------------------------------------
 //Creamos un array para iterar 1 por 1 cada input de tipo file
 Array.from(files).forEach(
 
@@ -28,11 +29,22 @@ Array.from(files).forEach(
         span.innerHTML = 'No se ha seleccionado ningún archivo'
       }
       else{
-        span.innerHTML = f.files[0].name;
+        //Validando si la imagen fue seleccionada
+        const archivo = f.files[0];
+        const tipoImagen = archivo.type.split('/')[0];
+
+        if(tipoImagen !== 'image'){
+          span.innerHTML = 'Por favor, seleccione un archivo de imagen válido.';
+
+        }else {
+          span.innerHTML = f.files[0].name;
+        }
       }
     });
   }
 );
+
+//-----------------------------------------------------------------------
 function uploadPhoto() {
     var fileInput = document.getElementById('fileInput');
     var file = fileInput.files[0];
@@ -54,22 +66,34 @@ function uploadPhoto() {
       console.log('No se seleccionó ninguna foto');
     }
 }
+
+//------------------------------------------------------------------
 const btn = document.querySelector("#edit");
 btn.addEventListener('click',function(){
   const titulo = document.querySelector('#title');
   const descripcion = document.querySelector('#post');
+
+   //Verificando titulo, descripcion y imagen del post no este vacio
+   if (titulo.value.trim() === '' || descripcion.value.trim() === '') {
+    window.alert('Por favor,escriba y cargue una imagen antes de publicar.');
+    return;
+  }
+
   const itemList = JSON.parse(localStorage.getItem("post")) || [];
+  const sesion = JSON.parse(localStorage.getItem('sessions') || []);
   // crea un nuevo objeto `Date`
   var today = new Date();
  
   // obtener la fecha y la hora
   var now = today.toLocaleString();
+  const creator = JSON.parse(localStorage.getItem("sessions") || []);
   const lst = {
     id: photoEdit,
     img: photoPreview.src,
     title: titulo.value,
     description: descripcion.value,
     fecha: now,
+    creador: creator.username,
   }
     for(var i = itemList.length-1; i>=0;i--){
         if(photoEdit.includes(itemList[i].id)){
@@ -77,7 +101,8 @@ btn.addEventListener('click',function(){
         }
     }
   itemList.unshift(lst);
-  localStorage.clear();
+  localStorage.removeItem('editar');
+  localStorage.removeItem('post');
   localStorage.setItem('post', JSON.stringify(itemList))
   titulo.value = '';
   descripcion.value = '';
@@ -85,4 +110,5 @@ btn.addEventListener('click',function(){
   photo.src = "";
   var fileInput = document.getElementById('select').textContent='Ningun archivo seleccionado';
   window.alert('Se ha creado el post');
+  window.location.href='site.html';
 });

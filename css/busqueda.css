@@ -1,0 +1,74 @@
+.conta{
+    position: absolute;
+    left: 48%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    padding: 10px;
+
+}
+input{
+    outline: none;
+    box-sizing: border-box;
+    height: 35px;
+    width: 0;
+    padding: 0 10px;
+    color: #000;
+    border-radius: 50px;
+    font-size: 20px;
+    border: 1px solid #897474;
+    transition: all .7s ease;
+}
+::placeholder{
+    color: grey;
+}
+.boton{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    background: #283048;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #859398, #283048);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #859398, #283048); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    line-height: 0px;
+    border-radius: 50px;
+    text-align: center;
+    cursor: pointer;
+    transition: .5s;
+
+}
+.boton i{
+    font-size: 15px;
+    color: white;
+    line-height: 50px;
+    transition: all .7s ease;
+}
+.conta:hover input{
+    width: 400px;
+}
+.conta:hover i{
+    transform: rotate(-360deg);
+}
+.btn:hover{
+    background: #cc0000;
+}
+
+@media(max-width: 450px){
+    .conta:hover input{
+        width: 300px;
+    }
+}
+@media(max-width:300px){
+    .conta:hover input{
+        width: 200px;
+    }
+    input{
+        font-size: 15px;
+    }
+}
+.filtro{
+    display: none;
+}
+.filtro2{
+    background-color: burlywood;
+}

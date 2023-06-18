@@ -1,19 +1,16 @@
-import {getUserWhoHasLoggedIn} from "../dataManagement/manageSessions.js";
-import {isAdmin} from "../dataManagement/getData.js";
-
-const username = getUserWhoHasLoggedIn();
-
-document.querySelector("[reload-page]").addEventListener("click", function () {
-    window.location.reload();
-});
 
 const readItems = () => {
+
+    //Craación de las publicaciones
     const contenedor = document.querySelector("#Creando");
     const itemList = JSON.parse(localStorage.getItem("post")) || [];
 
     itemList.forEach(item => {
         contenedor.appendChild(crearItem(item));
+        ocultarBotones();  
     });
+
+    //enviando id de foto a modificar
     const elementos = document.querySelectorAll('.edit');
     // Agregar una función a cada elemento
     elementos.forEach(function(elemento) {
@@ -23,6 +20,7 @@ const readItems = () => {
     });
     });
 
+    //eliminando elementos
     const elementosDelete = document.querySelectorAll('.delete');
     // Agregar una función a cada elemento
     elementosDelete.forEach(function(elemento) {
@@ -34,15 +32,40 @@ const readItems = () => {
                 itemList.splice(i,1);
             }
         }
+        localStorage.removeItem("post");
         localStorage.setItem('post', JSON.stringify(itemList));
-        window.location.reload();
+        window.alert('Se ha eliminado un post, recargue la pagina');
+        window.location.href="site.html";
     });
     });
+    //enviando a pagina para editar
+    const elementoEditar = document.querySelectorAll('.edit');
+    elementoEditar.forEach(function(element) {
+        element.addEventListener('click',function(){
+            window.location.href='EditPost.html';
+        })
+    });
+
+    //función para la barra de búsqueda
+    document.addEventListener('input',e=>{
+        if(e.target.matches('#Buscador')){
+            const poster = document.querySelectorAll('#poster');
+            document.querySelectorAll('.fw-bold').forEach(function(elemento){
+                if(elemento.textContent.toLowerCase().includes(e.target.value.toLowerCase()) & e.target.value !== ""){
+                    elemento.classList.add("filtro2");
+                } else {
+                    elemento.classList.remove("filtro2");
+                }
+
+            })
+        }
+    })
 }
-const crearItem = ({id, img, title, description,fecha}) => {
+const crearItem = ({id, img, title, description,fecha,creador}) => {
     //user header -- start --
     const divCard = document.createElement('div');
     divCard.setAttribute('class','card bg-ligth');
+    divCard.setAttribute("id","poster");
     const divCardBody = document.createElement('div');
     divCardBody.setAttribute('class','card-body');
     const divT = document.createElement('div');
@@ -55,7 +78,7 @@ const crearItem = ({id, img, title, description,fecha}) => {
     const divT2 = document.createElement('div');
     const h6 = document.createElement('h6');
     h6.setAttribute('class','fw-bold mb-1 purple');
-    h6.textContent = username;
+    h6.textContent= creador;
     const p = document.createElement('p');
     p.setAttribute('class','text-muted small mb-0')
     p.textContent='CINEBOX '+fecha;
@@ -67,10 +90,10 @@ const crearItem = ({id, img, title, description,fecha}) => {
     //publish post
     //imagen
     const img2 = document.createElement('img');
-    img2.setAttribute('class','card-img-top');
+    img2.setAttribute('class','IMGPost');
     img2.src=img;
     img2.alt='cine';
-    img2.style.height='500px';
+
     //titulo
     const divT3 = document.createElement('div');
     divT3.setAttribute('class','card-title text-center purple pt-2');
@@ -118,33 +141,38 @@ const crearItem = ({id, img, title, description,fecha}) => {
     pi3.textContent='Compartir';
     a3.appendChild(i3);
     a3.appendChild(pi3);
-    
+
+    //---------------------------------------------------------
     const editPostButton=document.createElement('button');
     editPostButton.setAttribute('class','edit');
     editPostButton.setAttribute('id',id);
     editPostButton.textContent='Editar';
+    //EStilo del button
+    editPostButton.style.border='2px solid #0079FF';
+    editPostButton.style.borderRadius='4px'
+    editPostButton.style.height = '35px'
+    editPostButton.style.width = '68px'
+    editPostButton.style.color = '#0079FF'
 
     const deletePostButton=document.createElement('button');
     deletePostButton.setAttribute('class','delete');
     deletePostButton.setAttribute('id',id);
     deletePostButton.textContent='Eliminar';
+    //EStilo del button
+    deletePostButton.style.border='2px solid #CD1818';
+    deletePostButton.style.borderRadius='4px'
+    deletePostButton.style.height = '35px'
+    deletePostButton.style.width = '68px'
+    deletePostButton.style.color = '#CD1818'
+    deletePostButton.style.marginLeft = '4px'
+    //-----------------------------------------------------------
     //a4.appendChild(pi4);
 
     divT4.appendChild(a);
     divT4.appendChild(a2);
     divT4.appendChild(a3);
-
-    const addNewPost = document.querySelector("[new-post]");
-
-    if(isAdmin(username)){
-        divT4.appendChild(editPostButton);
-        divT4.appendChild(deletePostButton);
-
-        addNewPost.classList.remove("d-none");
-        addNewPost.addEventListener("click", function () {
-            window.location.href = "../../html/CreaPost.html";
-        })
-    }
+    divT4.appendChild(editPostButton);
+    divT4.appendChild(deletePostButton);
 
     const divT5 = document.createElement('div');
     divT5.setAttribute('class', 'card-footer border-0');
@@ -194,7 +222,33 @@ const crearItem = ({id, img, title, description,fecha}) => {
 
     return divCard;
 }
+const ocultarBotones  = () =>{
+    const dataList = JSON.parse(localStorage.getItem("database")) || [];
+    const EnLinea = JSON.parse(localStorage.getItem('sessions') || []);
+    const borrar = document.querySelectorAll('.delete');
+    const editando = document.querySelectorAll('.edit');
+    for (let i = 0; i < dataList.length; i++) {
+        // Check if the username and role match the provided values
+        if (dataList[i].username === EnLinea.username && (dataList[i].rol === "Administrador" || dataList[i].rol === "root")) {
+            console.log('es admin');
+            borrar.forEach(element => {
+                element.classList.remove('d-none');
+            });
+            editando.forEach(element => {
+                element.classList.remove('d-none');
+            });
+        }
+        else if(dataList[i].username === EnLinea.username && (dataList[i].rol !== "Administrador" || dataList[i].rol !== "root")){
+            console.log('algo falla');
+            borrar.forEach(element => {
+                element.setAttribute('class','d-none');
+            });
+            editando.forEach(element => {
+                element.classList.add('class','d-none');
+            });
+        }
+    }
+}
 window.onload = function(){
     readItems();
 }
-

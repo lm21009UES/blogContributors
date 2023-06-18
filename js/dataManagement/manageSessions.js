@@ -4,12 +4,13 @@ export const userHasLoggedIn = (username) => {
     const userLogged = {
         username: username
     };
-    dataSessions.push(userLogged);
-    localStorage.setItem("sessions", JSON.stringify(dataSessions));
+    localStorage.removeItem('sessions');
+    localStorage.setItem("sessions", JSON.stringify(userLogged));
 };
 
 export const getUserWhoHasLoggedIn = () => {
-    return dataSessions[dataSessions.length - 1].username;
+    const sesion = JSON.parse(localStorage.getItem('sessions')) || [];
+    return sesion.username;
 };
 
 export const userHasLoggedOut = (username) => {
