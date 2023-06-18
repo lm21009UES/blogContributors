@@ -14,12 +14,12 @@
 <!--navbar horizontal-->
 <nav class="navbar">
     <div class="container-fluid">
-        <img src="../../images/NewLogo.png" alt="Logo" class="logo">
+        <a href="../site.html"><img src="../../images/NewLogo.png" alt="Logo" class="logo"></a>
 
         <!--Opciones-->
         <ul class="menuH">
             <li>
-                <button class="new">
+                <button class="new" btn-new-post>
                     <a href="#">
                         <span><i class="fa-solid fa-pen-to-square text-light"></i> New post</span>
                     </a>
@@ -35,7 +35,7 @@
             </li>
 
             <li>
-                <button class="salir">
+                <button class="salir" log-out>
                     <a href="#">
                         <span><i class="fa-solid fa-right-from-bracket text-light"></i> Logout</span>
                     </a>
@@ -52,7 +52,7 @@
         <div class="adminOnline mb-3">
             <div id="Foto">
                 <img class="Foto" src="../../images/PerfilTransparente.png" alt="">
-                <span>Name</span><br>
+                <span admin-name>Name</span><br>
                 <span> <i class="fa-solid fa-circle circulo"></i> Online</span>
             </div>
         </div>
@@ -198,7 +198,11 @@
                 </div>
                 <div class="invalid-feedback" data-invalid-retyped-password style="color: rgb(230, 52, 138);">
                 </div>
-
+                <label class="form-label text-light">Cambiar rol de usuario</label>
+                <select class="form-select mb-4" aria-label="Default select example" data-user-rol>
+                    <option value="1">Usuario</option>
+                    <option value="2">Administrador</option>
+                </select>
                 <!--Button-->
                 <div class="d-grid mb-4">
                     <button type="submit" class="btn btn-primary" confirm-button>Confirmar</button>

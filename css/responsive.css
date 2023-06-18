@@ -17,7 +17,7 @@
     }
 
     .newPost{
-        width: 900px; 
+        width: 900px;
     }
 
     .Vista{
@@ -72,7 +72,7 @@
     }
 
     .newPost{
-        width: 400px; 
+        width: 400px;
     }
 
     .newPost span{
@@ -102,6 +102,5 @@
     #title{
         width: 300px;
     }
-    
-}
 
+}

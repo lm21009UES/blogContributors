@@ -28,11 +28,23 @@ Array.from(files).forEach(
         span.innerHTML = 'No se ha seleccionado ningún archivo'
       }
       else{
-        span.innerHTML = f.files[0].name;
+        //Validando si la imagen fue seleccionada
+        const archivo = f.files[0];
+        const tipoImagen = archivo.type.split('/')[0];
+
+        if(tipoImagen !== 'image'){
+          span.innerHTML = 'Por favor, seleccione un archivo de imagen válido.';
+          imagenCargada =false;
+        }else {
+          span.innerHTML = f.files[0].name;
+          imagenCargada = true;
+        }
       }
     });
   }
 );
+
+
 function uploadPhoto() {
     var fileInput = document.getElementById('fileInput');
     var file = fileInput.files[0];
@@ -58,6 +70,13 @@ const btn = document.querySelector("#edit");
 btn.addEventListener('click',function(){
   const titulo = document.querySelector('#title');
   const descripcion = document.querySelector('#post');
+
+   //Verificando titulo, descripcion y imagen del post no este vacio
+   if (titulo.value.trim() === '' || descripcion.value.trim() === '' || !imagenCargada) {
+    window.alert('Por favor,escriba y cargue una imagen antes de publicar.');
+    return;
+  }
+
   const itemList = JSON.parse(localStorage.getItem("post")) || [];
   // crea un nuevo objeto `Date`
   var today = new Date();

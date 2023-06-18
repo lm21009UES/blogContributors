@@ -1,4 +1,5 @@
-import { isLoginOk } from "../dataManagement/getData.js";
+import {isAdmin, isLoginOk} from "../dataManagement/getData.js";
+import {userHasLoggedIn} from "../dataManagement/manageSessions.js";
 
 const invalidUser = document.querySelector("[data-invalid-username]");
 const invalidPassword = document.querySelector("[data-password]");
@@ -42,11 +43,13 @@ const validateData = (user, password) => {
         return;
     }
 
-    alert("Inicio de sesión correcto. Bienvenido, " + user);
-    document.getElementById("UserName").value = "";
-    document.getElementById('Password').value = "";
-    invalidUser.classList.remove("invalid-feedback");
-    invalidPassword.classList.add("invalid-feedback");
+    userHasLoggedIn(user);
+
+    if (isAdmin(user)) {
+        window.location.href = "../../html/admin/admin.html";
+    } else {
+        window.location.href = "../../html/site.html";
+    }
 };
 
 // Exportamos

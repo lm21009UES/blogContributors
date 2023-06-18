@@ -4,6 +4,8 @@
 
 //Creamos una const donde llamamos a formatear
 const files = document.querySelectorAll('.formatear');
+//establecemos esta const en false  para ver si se ha caragdo la imagen 
+let imagenCargada = false;
 
 //Creamos un array para iterar 1 por 1 cada input de tipo file
 Array.from(files).forEach(
@@ -20,27 +22,38 @@ Array.from(files).forEach(
         span.innerHTML = 'No se ha seleccionado ningún archivo'
       }
       else{
-        span.innerHTML = f.files[0].name;
+        //Validando si la imagen fue seleccionada
+        const archivo = f.files[0];
+        const tipoImagen = archivo.type.split('/')[0];
+
+        if(tipoImagen !== 'image'){
+          span.innerHTML = 'Por favor, seleccione un archivo de imagen válido.';
+          imagenCargada =false;
+        }else {
+          span.innerHTML = f.files[0].name;
+          imagenCargada = true;
+        }
       }
     });
   }
 );
+
 //-------------------------------------------------------------
 
 function uploadPhoto() {
-  var fileInput = document.getElementById('fileInput');
-  var file = fileInput.files[0];
+  let fileInput = document.getElementById('fileInput');
+    let file = fileInput.files[0];
 
-  if (file) {
-      var reader = new FileReader();
+    if (file) {
+      let reader = new FileReader();
 
       reader.onload = function(e) {
-          var photoData = e.target.result;
+          let photoData = e.target.result;
           localStorage.setItem('photo', photoData);
           console.log('Foto subida exitosamente');
 
           // Mostrar la foto en el formulario
-          var photoPreview = document.getElementById('photoPreview');
+          let photoPreview = document.getElementById('photoPreview');
           photoPreview.src = photoData;
       }
 
@@ -62,12 +75,20 @@ const btn = document.querySelector("#public");
 btn.addEventListener('click',function(){
   const titulo = document.querySelector('#title');
   const descripcion = document.querySelector('#post');
+
+
+  //Verificando titulo, descripcion imagen del post no este vacio
+  if (titulo.value.trim() === '' || descripcion.value.trim() === '' || !imagenCargada) {
+    window.alert('Por favor,escriba y cargue una imagen antes de publicar.');
+    return;
+  }
+
   const itemList = JSON.parse(localStorage.getItem("post")) || [];
   // crea un nuevo objeto `Date`
-  var today = new Date();
+  let today = new Date();
  
   // obtener la fecha y la hora
-  var now = today.toLocaleString();
+  let now = today.toLocaleString();
   const lst = {
     id: uuid.v4(),
     img: photoPreview.src,
@@ -76,12 +97,14 @@ btn.addEventListener('click',function(){
     fecha: now,
   }
   itemList.unshift(lst);
-  localStorage.clear();
-  localStorage.setItem('post', JSON.stringify(itemList))
+  localStorage.removeItem("post");
+  localStorage.removeItem("photo");
+  localStorage.setItem('post', JSON.stringify(itemList));
   titulo.value = '';
   descripcion.value = '';
-  var photo = document.querySelector("#photoPreview");
+  let photo = document.querySelector("#photoPreview");
   photo.src = "";
-  var fileInput = document.getElementById('select').textContent='Ningun archivo seleccionado';
+  let fileInput = document.getElementById('select').textContent='Ningun archivo seleccionado';
   window.alert('Se ha creado el post');
+  window.location.href = "site.html";
 });

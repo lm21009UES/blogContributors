@@ -44,3 +44,13 @@ export const isLoginOk = (username, password) => {
     }
     return false; // Si el nombre de usuario y la contraseña no coinciden, devolver falso
 };
+
+export const isAdmin = (username) => {
+    for (let i = 0; i < dataList.length; i++) {
+        // Check if the username and role match the provided values
+        if (dataList[i].username === username && (dataList[i].rol === "Administrador" || dataList[i].rol === "root")) {
+            return true; // If username and role are admin
+        }
+    }
+    return false; // If username and role are not admin
+};
