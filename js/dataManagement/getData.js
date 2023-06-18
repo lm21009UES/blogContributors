@@ -13,11 +13,11 @@ export const getUsername = (username) => {
 };
 
 // Verificar si el correo electrónico existe en la base de datos
-export const getEmail = (email) => {
+export const getEmail = (username) => {
     for (let i = 0; i < dataList.length; i++) {
         // Comprobar si el correo electrónico actual coincide con el proporcionado
-        if (dataList[i].email === email) {
-            return true; // Si se encuentra el correo electrónico, devolver verdadero
+        if (dataList[i].username === username) {
+            return dataList[i].email; // Si se encuentra el correo electrónico, devolver verdadero
         }
     }
     return false; // Si no se encuentra el correo electrónico, devolver falso

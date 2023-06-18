@@ -1,5 +1,4 @@
 import {isAdmin, isLoginOk} from "../dataManagement/getData.js";
-import {userHasLoggedIn} from "../dataManagement/manageSessions.js";
 
 const invalidUser = document.querySelector("[data-invalid-username]");
 const invalidPassword = document.querySelector("[data-password]");
@@ -43,12 +42,10 @@ const validateData = (user, password) => {
         return;
     }
 
-    userHasLoggedIn(user);
-
     if (isAdmin(user)) {
-        window.location = "../../html/admin/admin.html";
+        window.location.href = "../../html/admin/admin.html";
     } else {
-        window.location = "../../html/site.html";
+        window.location.href = "../../html/site.html";
     }
 };
 

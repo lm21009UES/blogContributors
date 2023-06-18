@@ -9,7 +9,7 @@ export const userHasLoggedIn = (username) => {
 };
 
 export const getUserWhoHasLoggedIn = () => {
-    return dataSessions[dataSessions.length - 1].username;
+    return "Sexo";
 };
 
 export const userHasLoggedOut = (username) => {
