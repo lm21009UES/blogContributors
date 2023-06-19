@@ -67,7 +67,9 @@ export const readData = () => {
     }
 
     // Agregar la tabla al contenedor especificado en el HTML
-    tableContainer.appendChild(myTable);
+    if(tableContainer !== null){
+        tableContainer.appendChild(myTable);
+    }
 };
 
 const createCheckBox = () => {

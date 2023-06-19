@@ -60,10 +60,12 @@ export const checkIfEmailIsCorrect = (email) => {
         return;
     }
 
-    // Resetear en caso de no haber errores:
-    registryButton.disabled = false;
-    invalidEmail.innerHTML = "";
-    invalidEmail.classList.add("invalid-feedback");
+    if(registryButton !== null){
+        // Resetear en caso de no haber errores:
+        registryButton.disabled = false;
+        invalidEmail.innerHTML = "";
+        invalidEmail.classList.add("invalid-feedback");
+    }
     return true;
 };
 

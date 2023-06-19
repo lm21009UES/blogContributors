@@ -49,11 +49,15 @@ export const checkIfPasswordIsCorrect = (password, retypedPassword) => {
         return;
     }
 
-    // Si todas las condiciones se cumplen, eliminar el mensaje de error:
-    invalidPassword.innerHTML = "";
-    invalidRetypedPassword.innerHTML = "";
-    invalidPassword.classList.remove("invalid-feedback");
-    invalidRetypedPassword.classList.remove("invalid-feedback");
+    if(registryButton !== null){
+        // Resetear en caso de no haber errores:
+        registryButton.disabled = false;
+        // Si todas las condiciones se cumplen, eliminar el mensaje de error:
+        invalidPassword.innerHTML = "";
+        invalidRetypedPassword.innerHTML = "";
+        invalidPassword.classList.remove("invalid-feedback");
+        invalidRetypedPassword.classList.remove("invalid-feedback");
+    }
     return true;
 };
 

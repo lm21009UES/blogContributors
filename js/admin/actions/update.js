@@ -38,6 +38,7 @@ export const updateValues = (checkedBoxIndexes) => {
                 getUpdatedIndex(index);
                 validateUpdate(
                     inputUsername.value,
+                    "",
                     inputEmail.value,
                     inputPassword.value,
                     inputRetypedPassword.value,
@@ -48,6 +49,29 @@ export const updateValues = (checkedBoxIndexes) => {
     }
 };
 
-export const updatePosts = () => {
-//
+export const updateUserValues = (user) => {
+
+    // Recorrer los índices de los checkboxes seleccionados
+    for (let i = 0; i < dataLocalStorage.length; i++) {
+        // Asignar los valores a los input correspondientes
+        inputUsername.value = user;
+
+        if(dataLocalStorage[i].username === user){
+            inputEmail.value = dataLocalStorage[i].email;
+            inputPassword.value = dataLocalStorage[i].password;
+            inputRetypedPassword.value = dataLocalStorage[i].password;
+
+            confirmButton.addEventListener("click", function (){
+                validateUpdate(
+                    user,
+                    inputUsername.value,
+                    inputEmail.value,
+                    inputPassword.value,
+                    inputRetypedPassword.value
+                );
+                // Redirige a la página de inicio de sesión
+                window.location.href ='../../html/Login.html'
+            });
+        }
+    }
 };

@@ -1,4 +1,4 @@
-import {saveItems, updateItems} from "../dataManagement/saveData.js";
+import {saveItems, updateData, updateItems} from "../dataManagement/saveData.js";
 import {checkIfUsernameIsCorrect} from "./validations/validateUsername.js";
 import {checkIfEmailIsCorrect} from "./validations/validateEmail.js";
 import {checkIfPasswordIsCorrect} from "./validations/validatePassword.js";
@@ -29,22 +29,36 @@ const validateRegistry = (e) =>{
     }
 };
 
-export const validateUpdate = (username, email, password, retypedPassword, rol) =>{
+export const validateUpdate = (username, newName, email, password, retypedPassword) =>{
 
     //Call function to validate username:
     checkIfUsernameIsCorrect(username);
     checkIfEmailIsCorrect(email);
     checkIfPasswordIsCorrect(password, retypedPassword);
 
-    if(checkIfUsernameIsCorrect(username) && checkIfEmailIsCorrect(email) && checkIfPasswordIsCorrect(password, retypedPassword)){
-        updateItems(username, email, password, i, rol);
+    if(newName === ""){
+        if(checkIfUsernameIsCorrect(username) && checkIfEmailIsCorrect(email) && checkIfPasswordIsCorrect(password, retypedPassword)){
+            updateItems(username, email, password, i);
 
-        // Clear the input fields
-        document.querySelector("#editCustomUsername").value = "";
-        document.querySelector("#editEmail").value = "";
-        document.querySelector("#editPassword").value = "";
-        document.querySelector("#editPasswordAgain").value = "";
+            // Clear the input fields
+            document.querySelector("#editCustomUsername").value = "";
+            document.querySelector("#editEmail").value = "";
+            document.querySelector("#editPassword").value = "";
+            document.querySelector("#editPasswordAgain").value = "";
+        }
     }
+    else{
+        if(checkIfUsernameIsCorrect(username) && checkIfEmailIsCorrect(email) && checkIfPasswordIsCorrect(password, retypedPassword)){
+            updateData(username, newName, email, password);
+
+            // Clear the input fields
+            document.querySelector("#editCustomUsername").value = "";
+            document.querySelector("#editEmail").value = "";
+            document.querySelector("#editPassword").value = "";
+            document.querySelector("#editPasswordAgain").value = "";
+        }
+    }
+    window.location.reload();
 };
 
 export const getUpdatedIndex = (index) => {

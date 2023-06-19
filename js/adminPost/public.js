@@ -34,8 +34,13 @@ const readItems = () => {
         }
         localStorage.removeItem("post");
         localStorage.setItem('post', JSON.stringify(itemList));
+<<<<<<< HEAD
+        window.alert('Post eliminado');
+        window.location.reload();
+=======
         window.alert('Se ha eliminado un post, recargue la pagina');
         window.location.href="site.html";
+>>>>>>> aca73551416c03073e696f167631a823583ae0b8
     });
     });
     //enviando a pagina para editar

@@ -10,6 +10,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"></head>
     <!--llamando al css que se encarga de adaptar las imagenes y darles un tamaño fijo-->
     <link rel="stylesheet" href="../css/sitie.css">
+<<<<<<< HEAD
+    <link rel="stylesheet" href="../css/profile.css">
+    <script src="../js/admin/event.js" type="module" defer></script>
+=======
+>>>>>>> aca73551416c03073e696f167631a823583ae0b8
 <body>
 
 <div class="container-sm px-lg-4">
@@ -22,7 +27,7 @@
                 <ul class="navbar-nav flex-row d-none d-md-flex">
 
                     <li class="nav-item me-3 me-lg-1">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="../index.html">
                             <span><i class="fas fa-sign-out-alt fa-2x"></i></span>
                         </a>
                     </li>
@@ -33,7 +38,11 @@
                     </li>
 
                     <li class="nav-item me-3 me-lg-1">
+<<<<<<< HEAD
+                        <a class="nav-link" href="../index.html">
+=======
                         <a class="nav-link" href="admin/admin.html">
+>>>>>>> aca73551416c03073e696f167631a823583ae0b8
                             <span><i class="fas fa-home fa-2x"></i></span>
                         </a>
                     </li>
@@ -59,7 +68,7 @@
                 <ul class="navbar-nav flex-row">
                     <!-- USUARIO -->
                     <li class="nav-item me-3 me-lg-1">
-                        <a class="nav-link" href="#" >
+                        <a class="nav-link" href="profile/userProfile.html" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <i class="fas fa-user fa-2x"></i>
                         </a>
                     </li>
@@ -73,7 +82,7 @@
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink" style="position: absolute; inset: auto auto auto auto;" data-popper-placement="top-start" data-mdb-popper="null">
                             <li><a class="dropdown-item" href="#" reload-page>Actualizar</a></li>
                             <li><a class="dropdown-item d-none" href="#" new-post>Nuevo post</a></li>
-                            <li><a class="dropdown-item" href="#">Mi cuenta</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Mi cuenta</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -404,10 +413,10 @@
 
                             <ul class="list-unstyled mb-0">
                                 <li>
-                                    <a href="#!" class="text-dark nav-link">Pepito Juarez</a>
+                                    <a href="#!" class="text-dark nav-link">Leonel Andrés Messi</a>
                                 </li>
                                 <li>
-                                    <a href="#!" class="text-dark nav-link">Petronila Diaz</a>
+                                    <a href="#!" class="text-dark nav-link">Cristiano Ronaldo</a>
                                 </li>
                             </ul>
                         </div>
@@ -429,9 +438,78 @@
 
     </div>
 </div>
+<!-- Modal: perfil de usuario-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog text-center">
+        <div class="modal-content w-75">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Mi perfil</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <img class="w-100" src="../images/profile/baner.png" alt="fondo" style="height: 7rem;">
+            <img class="IMGPerfil pic" src="../images/profile/Perfil1.png" alt="Perfil">
+            <div class="modal-body text-center">
+                <span class="Name" id="name">Nombre de usuario</span><br>
+                <span class="UserName" id="userName" user-name></span><br><br>
+                <span class="PeliFavorita">Película Favorita: </span> <br>
+                <span class="Pelicula" id="favFilm"></span><br><br>
+                <span class="serieFavorita">Serie Favorita: </span> <br>
+                <span class="Serie" id="favSerie"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" btn-edit-info>Editar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-
+<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Actualizar datos</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="editCustomUsername" class="Name form-label">Nombre de usuario: </label>
+                        <input type="input" class="form-control" id="editCustomUsername" aria-describedby="emailHelp" user-name>
+                    </div>
+                    <div class="invalid-feedback" data-invalid-password style="color: rgb(230, 52, 138);">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editEmail" class="form-label">Correo: </label>
+                        <input type="email" class="form-control" id="editEmail">
+                    </div>
+                    <div class="invalid-feedback" data-invalid-password style="color: rgb(230, 52, 138);">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editPassword" class="form-label">Contraseña: </label>
+                        <input type="password" class="form-control" id="editPassword">
+                    </div>
+                    <div class="invalid-feedback" data-invalid-password style="color: rgb(230, 52, 138);">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editPasswordAgain" class="form-label">Repita su contraseña: </label>
+                        <input type="password" class="form-control" id="editPasswordAgain">
+                    </div>
+                    <div class="invalid-feedback" data-invalid-password style="color: rgb(230, 52, 138);">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary" confirm-button>Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<<<<<<< HEAD
+=======
 <script src="../js/adminPost/search.js"></script>
+>>>>>>> aca73551416c03073e696f167631a823583ae0b8
 </body>
 </html>

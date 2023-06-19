@@ -1,9 +1,10 @@
 // Importar la función readData del archivo read.js en la carpeta actions
 import {readData} from "./actions/read.js";
-import {updateValues} from "./actions/update.js";
+import {updateUserValues, updateValues} from "./actions/update.js";
 import {deleteItems} from "./actions/delete.js";
 import {checkIndexes, countCheckedCheckboxes} from "./actions/manageCheckBoxes.js";
 import {getUserWhoHasLoggedIn} from "../dataManagement/manageSessions.js";
+import {films, series} from "../dataManagement/favMedia.js";
 
 // Obtener los botones de editar usuario, silenciar usuario, eliminar usuario y cancelar del documento HTML
 const btnEditUser = document.querySelector("[edit-info-button]");
@@ -11,11 +12,18 @@ const btnMuteUser = document.querySelector("[mute-user-button]");
 const btnDeleteUser = document.querySelector("[delete-user-button]");
 const btnCancell = document.querySelectorAll("[cancell-button]");
 const btnNewPost = document.querySelector("[btn-new-post]");
+const btnEditInfo = document.querySelector("[btn-edit-info]");
 
 const adminName = document.querySelector("[admin-name]");
+const userName = document.querySelector("[user-name]");
+
+const favFilm = document.querySelector("#favFilm");
+const favSeries = document.querySelector("#favSerie");
 
 // Array para almacenar los índices de los checkboxes seleccionados
 const checkedBoxIndexes = [];
+
+let oldUserName = "";
 
 const disableButtons = () => {
     // Deshabilitar los botones de editar usuario, silenciar usuario y eliminar usuario
@@ -29,14 +37,27 @@ const enableButtons = () => {
 
 // Ejecutar el código cuando el contenido del documento se haya cargado
 document.addEventListener("DOMContentLoaded", function() {
+    if(adminName !== null){
+        adminName.textContent = getUserWhoHasLoggedIn();
+    }
+
+    if(userName !== null){
+        userName.textContent = getUserWhoHasLoggedIn();
+        oldUserName = userName.textContent;
+    }
+
+    if(favFilm !== null && favSeries !== null){
+        const randomFilmsIndex = Math.floor(Math.random() * films.length);
+        const randomSeriesIndex = Math.floor(Math.random() * series.length);
+
+        favFilm.textContent = films[randomFilmsIndex];
+        favSeries.textContent = series[randomSeriesIndex];
+    }
+
     // Llamar a la función readData para leer los datos
     readData();
     disableButtons();
 
-    adminName.textContent = getUserWhoHasLoggedIn();
-});
-
-document.addEventListener("DOMContentLoaded", function() {
     // Obtener todos los checkboxes del documento HTML
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
@@ -60,26 +81,39 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-btnEditUser.addEventListener("click", function (){
-    updateValues(checkedBoxIndexes);
-    checkedBoxIndexes.splice(0, checkedBoxIndexes.length);
-});
+if(btnEditUser !== null){
+    btnEditUser.addEventListener("click", function (){
+        updateValues(checkedBoxIndexes);
+        checkedBoxIndexes.splice(0, checkedBoxIndexes.length);
+    });
+}
 
-btnDeleteUser.addEventListener("click", function () {
-    deleteItems(checkedBoxIndexes);
+if(btnDeleteUser !== null){
+    btnDeleteUser.addEventListener("click", function () {
+        deleteItems(checkedBoxIndexes);
 
-    // Volver a leer los datos y actualizar la visualización
-    window.location.reload();
-});
-
-
-// Agregar un event listener al botón de cancelar para recargar la página
-btnCancell.forEach(button => {
-    button.addEventListener("click", function (){
+        // Volver a leer los datos y actualizar la visualización
         window.location.reload();
     });
-});
+}
 
-btnNewPost.addEventListener("click", function () {
-    window.location.href = "../creaPost.html";
-});
+if(btnCancell !== null){
+    // Agregar un event listener al botón de cancelar para recargar la página
+    btnCancell.forEach(button => {
+        button.addEventListener("click", function (){
+            window.location.reload();
+        });
+    });
+}
+
+if(btnNewPost !== null){
+    btnNewPost.addEventListener("click", function () {
+        window.location.href = "../creaPost.html";
+    });
+}
+
+if(btnEditInfo !== null){
+    btnEditInfo.addEventListener("click", function (){
+        updateUserValues(oldUserName);
+    });
+}
