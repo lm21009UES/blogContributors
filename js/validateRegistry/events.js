@@ -16,7 +16,9 @@ const enableButton = () => {
 }
 
 // Agregar un event listener al botón de registro para validar el registro
-btnSignup.addEventListener("click", validateRegistry);
+if(btnSignup !== null){
+    btnSignup.addEventListener("click", validateRegistry);
+}
 
 // Agregar event listeners a los elementos de entrada para habilitar el botón de registro al escribir
 inputUsername.addEventListener("keydown", enableButton);

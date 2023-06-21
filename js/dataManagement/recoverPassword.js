@@ -76,6 +76,7 @@ export const changePassword = (email, newPassword, retypedPassword) => {
                 // Actualizar los datos en el LocalStorage
                 localStorage.setItem("database", JSON.stringify(dataList));
                 alert("Tu contraseña ha sido actualizada correctamente");
+                window.location.href = "../index.html";
                 return; // Salir del bucle después de actualizar la contraseña
             }
         }

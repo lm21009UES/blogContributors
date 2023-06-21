@@ -22,7 +22,7 @@ export const saveItems = (username, email, password) => {
         // Guarda la cadena JSON en el almacenamiento local con la clave "database"
         localStorage.setItem("database", JSON.stringify(dataList));
 
-        window.location = "../../html/admin/admin.html";
+        window.location = "admin.html";
     }
 
     else{
@@ -52,21 +52,28 @@ export const saveItems = (username, email, password) => {
         // Guarda la cadena JSON en el almacenamiento local con la clave "database"
         localStorage.setItem("database", JSON.stringify(dataList));
 
-<<<<<<< HEAD
-=======
         
 
->>>>>>> aca73551416c03073e696f167631a823583ae0b8
         // Enviar a la página correspondiente
-        window.location = "../../html/site.html";
+        window.location = "site.html";
     }
     // Quién ha iniciado la sesión?
     userHasLoggedIn(username);
-<<<<<<< HEAD
 };
 
 export const updateData = (oldUsername, newUsername, email, password) => {
     const loginList = JSON.parse(localStorage.getItem("loginList")) || [];
+
+    // Comprobar si el usuario ya existe
+    if (checkIfUserAlreadyExists(newUsername) && checkIfEmailAlreadyExists(email)) {
+        if (checkIfUserAlreadyExists(newUsername)){
+            alert("Usuario ya registrado");
+        }
+        if (checkIfEmailAlreadyExists(email)){
+            alert("Usuario ya registrado");
+        }
+        return;
+    }
 
     for (let i = 0; i < dataList.length; i++) {
         if(dataList[i].username === oldUsername){
@@ -91,8 +98,6 @@ export const updateData = (oldUsername, newUsername, email, password) => {
 
     // Redirige a la página de inicio de sesión
     //window.location.href = "../../html/Login.html";
-=======
->>>>>>> aca73551416c03073e696f167631a823583ae0b8
 };
 
 export const updateItems = (username, email, password, i, rol) => {
@@ -105,4 +110,6 @@ export const updateItems = (username, email, password, i, rol) => {
     // Guarda la cadena JSON en el almacenamiento local con la clave "database"
     localStorage.setItem("database", JSON.stringify(dataList));
 
+    // Muestra un mensaje de completado
+    alert("Actualización de datos completada");
 };

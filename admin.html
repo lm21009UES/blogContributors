@@ -1,0 +1,228 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Panel de control</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="./js/admin/event.js" type="module" defer></script>
+</head>
+<body>
+
+<!--navbar horizontal-->
+<nav class="navbar">
+    <div class="container-fluid">
+        <a href="site.html"><img src="./images/NewLogo.png" alt="Logo" class="logo"></a>
+
+        <!--Opciones-->
+        <ul class="menuH">
+            <li>
+                <button class="new" btn-new-post>
+                    <a href="#">
+                        <span><i class="fa-solid fa-pen-to-square text-light"></i> New post</span>
+                    </a>
+                </button>
+            </li>
+
+            <li>
+                <button class="settings">
+                    <a href="#">
+                        <span><i class="fa-sharp fa-solid fa-gears"></i> Settings</span>
+                    </a>
+                </button>
+            </li>
+
+            <li>
+                <button class="salir" log-out>
+                    <a href="index.html">
+                        <span><i class="fa-solid fa-right-from-bracket text-light"></i> Logout</span>
+                    </a>
+                </button>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="d-flex">
+    <!--navbar Vertical-->
+    <div class="menuV">
+
+        <div class="adminOnline mb-3">
+            <div id="Foto">
+                <img class="Foto" src="./images/PerfilTransparente.png" alt="">
+                <span admin-name>Name</span><br>
+                <span> <i class="fa-solid fa-circle circulo"></i> Online</span>
+            </div>
+        </div>
+
+        <div>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div><br>
+
+        <div class="form-check opcion mb-3">
+            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="option1" checked>
+            <label class="form-check-label" for="exampleRadios1">
+                Post
+            </label>
+        </div>
+
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" checked>
+            <label class="form-check-label" for="exampleRadios2">
+                Categories
+            </label>
+        </div>
+
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" checked>
+            <label class="form-check-label" for="exampleRadios3">
+                Users
+            </label>
+        </div>
+
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4" checked>
+            <label class="form-check-label" for="exampleRadios4">
+                Roles
+            </label>
+        </div>
+
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios5" value="option5" checked>
+            <label class="form-check-label" for="exampleRadios5">
+                Permisos
+            </label>
+        </div>
+    </div>
+
+    <div class="Informacion">
+
+        <div class="title">
+            <h2>Usuarios</h2>
+            <hr>
+        </div>
+        <button class="btn btn-danger mb-3" delete-user-button>
+            Eliminar
+        </button>
+        <button class="btn btn-warning mb-3" mute-user-button>
+            Silenciar
+        </button>
+        <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal" edit-info-button>
+            Editar
+        </button>
+        <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop" add-user-button>
+            Agregar
+        </button>
+
+        <button type="button" onclick="alert('Comentarios aprobados')" class="btn btn-success">
+            Aprobar comentario
+        </button>
+
+        
+        <div class="datos" data-container>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: agregar un nuevo usuario -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background-color: rgb(29, 40, 83)">
+            <h2 class="text-center py-4 text-light">Agregar un nuevo usuario</h2>
+            <!--Formulario de registro-->
+            <form action="#" class="action m-3">
+                <div class="mb-4">
+                    <label for="validationCustomUsername" class="form-label text-light">Nombre de usuario</label>
+                    <input type="text" class="form-control" id="validationCustomUsername" style="background:rgba(220, 235, 241, 0.774);" onkeydown="enableButton()">
+                </div>
+                <div class="invalid-feedback" data-invalid-username style="color: rgb(230, 52, 138);">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="form-label text-light">Correo</label>
+                    <input type="email" class="form-control" id="email" name="email" style="background:rgba(220, 235, 241, 0.774);" onkeydown="enableButton()">
+                </div>
+                <div class="invalid-feedback" data-invalid-email style="color: rgb(230, 52, 138);">
+                </div>
+                <div class="mb-4">
+                    <label for="validationPassword" class="form-label text-light">Contraseña</label>
+                    <input type="password" class="form-control" id="validationPassword" style="background:rgba(220, 235, 241, 0.774);" name="Password" onkeydown="enableButton()">
+                </div>
+                <div class="invalid-feedback" data-invalid-password style="color: rgb(230, 52, 138);">
+                </div>
+                <div class="mb-4">
+                    <label for="validationPasswordAgain" class="form-label text-light">Confirmar contraseña</label>
+                    <input type="password" class="form-control" id="validationPasswordAgain" style="background:rgba(220, 235, 241, 0.774);" name="Password"  onkeydown="enableButton()">
+                </div>
+                <div class="invalid-feedback" data-invalid-retyped-password style="color: rgb(230, 52, 138);">
+                </div>
+
+                <!--Button-->
+                <div class="d-grid mb-4">
+                    <button type="submit" class="btn btn-primary" Signup-button>Agregar</button>
+                    <button type="button" class="btn btn-secondary mt-3" data-bs-dismiss="modal" cancell-button>Cerrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--Modal: editar usuario-->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background-color: rgb(29, 40, 83)">
+            <h2 class="text-center py-4 text-light">Editar datos de usuario</h2>
+            <!--Formulario de registro-->
+            <form action="#" class="action m-3">
+                <div class="mb-4">
+                    <label for="validationCustomUsername" class="form-label text-light">Nombre de usuario</label>
+                    <input type="text" class="form-control" id="editCustomUsername" style="background:rgba(220, 235, 241, 0.774);" onkeydown="enableButton()">
+                </div>
+                <div class="invalid-feedback" data-invalid-username style="color: rgb(230, 52, 138);">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="form-label text-light">Correo</label>
+                    <input type="email" class="form-control" id="editEmail" name="email" style="background:rgba(220, 235, 241, 0.774);" onkeydown="enableButton()">
+                </div>
+                <div class="invalid-feedback" data-invalid-email style="color: rgb(230, 52, 138);">
+                </div>
+                <div class="mb-4">
+                    <label for="validationPassword" class="form-label text-light">Contraseña</label>
+                    <input type="password" class="form-control" id="editPassword" style="background:rgba(220, 235, 241, 0.774);" name="Password" onkeydown="enableButton()">
+                </div>
+                <div class="invalid-feedback" data-invalid-password style="color: rgb(230, 52, 138);">
+                </div>
+                <div class="mb-4">
+                    <label for="validationPasswordAgain" class="form-label text-light">Confirmar contraseña</label>
+                    <input type="password" class="form-control" id="editPasswordAgain" style="background:rgba(220, 235, 241, 0.774);" name="Password"  onkeydown="enableButton()">
+                </div>
+                <div class="invalid-feedback" data-invalid-retyped-password style="color: rgb(230, 52, 138);">
+                </div>
+                <label class="form-label text-light">Cambiar rol de usuario</label>
+                <select class="form-select mb-4" aria-label="Default select example" data-user-rol>
+                    <option value="1">Usuario</option>
+                    <option value="2">Administrador</option>
+                </select>
+                <!--Button-->
+                <div class="d-grid mb-4">
+                    <button type="submit" class="btn btn-primary" confirm-button>Confirmar</button>
+                    <button type="button" class="btn btn-secondary mt-3" data-bs-dismiss="modal" cancell-button>Cerrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="./js/validateRegistry/events.js" type="module" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</body>
+</html>

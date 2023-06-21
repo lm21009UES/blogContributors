@@ -11,11 +11,15 @@ const retypedPassword = document.querySelector("#validationPasswordAgain");
 
 // Función para habilitar el botón de cambio de contraseña
 const enableButton = () => {
-    btnChangePassword.disabled = false;
+    if(btnChangePassword !== null){
+        btnChangePassword.disabled = false;
+    }
 };
 
 // Agregar un event listener al botón de cambio de contraseña para verificar el correo electrónico
-btnChangePassword.addEventListener("click", checkEmail);
+if(btnChangePassword !== null){
+    btnChangePassword.addEventListener("click", checkEmail);
+}
 
 // Agregar event listeners a los elementos de entrada para habilitar el botón de cambio de contraseña al escribir
 emailAddress.addEventListener("keydown", enableButton);

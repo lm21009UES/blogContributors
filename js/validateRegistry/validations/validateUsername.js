@@ -21,7 +21,7 @@ export const checkIfUsernameIsCorrect = (username) => {
 
     // Verificar longitud del nombre de usuario:
     if(checkUsernameLong(username)){
-        invalidUsername.innerHTML = "El nombre de usuario es demasiado corto";
+        alert("El nombre de usuario es demasiado corto");
         invalidUsername.classList.remove("invalid-feedback");
         registryButton.disabled = true;
         return;

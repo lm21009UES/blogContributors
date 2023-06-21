@@ -60,6 +60,11 @@ export const updateUserValues = (user) => {
             inputEmail.value = dataLocalStorage[i].email;
             inputPassword.value = dataLocalStorage[i].password;
             inputRetypedPassword.value = dataLocalStorage[i].password;
+            // userRol.value = dataLocalStorage[i].rol;
+            //
+            // if(dataLocalStorage[i].rol === "root"){
+            //     return;
+            // }
 
             confirmButton.addEventListener("click", function (){
                 validateUpdate(
@@ -70,7 +75,7 @@ export const updateUserValues = (user) => {
                     inputRetypedPassword.value
                 );
                 // Redirige a la página de inicio de sesión
-                window.location.href ='../../html/Login.html'
+                window.location.href ='Login.html';
             });
         }
     }

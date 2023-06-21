@@ -60,7 +60,7 @@ input{
 }
 @media(max-width:300px){
     .conta:hover input{
-        width: 200px;
+        width: 180px;
     }
     input{
         font-size: 15px;

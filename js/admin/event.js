@@ -27,12 +27,16 @@ let oldUserName = "";
 
 const disableButtons = () => {
     // Deshabilitar los botones de editar usuario, silenciar usuario y eliminar usuario
-    btnEditUser.disabled = btnMuteUser.disabled = btnDeleteUser.disabled = true;
+    if(btnEditUser !== null && btnMuteUser !== null && btnDeleteUser !== null) {
+        btnEditUser.disabled = btnMuteUser.disabled = btnDeleteUser.disabled = true;
+    }
 };
 
 const enableButtons = () => {
     // Deshabilitar los botones de editar usuario, silenciar usuario y eliminar usuario
-    btnEditUser.disabled = btnMuteUser.disabled = btnDeleteUser.disabled = false;
+    if(btnEditUser !== null && btnMuteUser !== null && btnDeleteUser !== null){
+        btnEditUser.disabled = btnMuteUser.disabled = btnDeleteUser.disabled = false;
+    }
 };
 
 // Ejecutar el código cuando el contenido del documento se haya cargado
@@ -108,7 +112,7 @@ if(btnCancell !== null){
 
 if(btnNewPost !== null){
     btnNewPost.addEventListener("click", function () {
-        window.location.href = "../creaPost.html";
+        window.location.href = "CreaPost.html";
     });
 }
 

@@ -46,9 +46,9 @@ const validateData = (user, password) => {
     userHasLoggedIn(user);
 
     if (isAdmin(user)) {
-        window.location.href = "../../html/admin/admin.html";
+        window.location = "admin.html";
     } else {
-        window.location.href = "../../html/site.html";
+        window.location = "site.html";
     }
 };
 
