@@ -16,8 +16,8 @@
 <script src="./js/admin/event.js" type="module" defer></script>
 <body>
 
-<div class="container-sm px-lg-4">
-    <div class="container-sm px-lg-2">
+<div class="container-lg px-lg-4">
+    <div class="container-lg px-lg-2">
         <!--Header-->
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid justify-content-between">
@@ -93,7 +93,7 @@
         </nav>
 
         <!--Header nav-->
-        <div class="navbar-top">
+        <div class="navbar-top col-md-auto d-none d-lg-block">
             <ul class="nav justify-content-center">
                 <li class="nav-item">
                     <a class="nav-link link-hover text-dark fw-semibold fs-6" href="#">Marvel</a>
@@ -185,15 +185,302 @@
         <div class="main mt-4">
             <div class="container-fluid">
                 <div class="row flex-nowrap">
+                    
                     <div class="col-xl-9 col-md-12 " id="Creando">
                         <div class="d-flex justify-content-center">
                             <!--Para las imagenes que se suben al post-->
                             <img src="./images/NewLogo.png" width="300px" class="text-center">
                         </div>
+
+
+                        <!--POSTS-->
+
+                        <div class="card bg-light mt-2">
+                            <div class="card-body">
+                                <div class="d-flex flex-start align-items-center mb-2">
+                                    <img class="rounded-circle shadow-1-strong me-3"
+                                        src="../images/usuario2.png" alt="avatar" width="40"
+                                        height="40" />
+                                    <div>
+                                        <h6 class="fw-bold mb-1 purple">Erick Adony</h6>
+                                        <p class="text-muted small mb-0">
+                                        CINEBOX - 21/06/2023 13:49:16
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <img src="../images/cache.jpg" class="card-img-top IMGPost" alt="cine" style="height: 250px;">
+
+                                <div class="card-title text-center purple pt-2 "><h5 class="fw-bold">'Caché' (2005) - Prime Video</h5></div>
+                                <p class="mt-2">
+                                    Georges y Anne Laurent son un matrimonio burgués que empieza a recibir misteriosas cintas de vídeo grabadas frente a su casa.
+                                    En ellas se les ve con su familia, acompañados de unos dibujos inquietantes. ¿Quién se las envía y por qué? Georges está convencido de que es alguien de su entorno.
+                                    Caché es un thriller psicológico del aclamado director Michael Haneke, que ganó el premio a la mejor dirección en el Festival de Cannes y cinco premios del cine europeo.
+                                    Protagonizada por Daniel Auteuil y Juliette Binoche, la película explora temas como la culpa, la memoria y el colonialismo.
+                                </p>
+                    
+                                <div class="small d-flex justify-content-start">
+                                <a href="#!" class="nav-link purple d-flex align-items-center me-3">
+                                    <i class="far fa-thumbs-up me-1"></i>
+                                    <p class="mb-0">Me gusta</p>
+                                </a>
+                                <a href="#!" class="nav-link purple d-flex align-items-center me-3">
+                                    <i class="far fa-comment-dots me-1"></i>
+                                    <p class="mb-0">Comentar</p>
+                                </a>
+                                <a href="#!" class="nav-link purple d-flex align-items-center me-3">
+                                    <i class="fas fa-share me-1"></i>
+                                    <p class="mb-0">Compartir</p>
+                                </a>
+                                </div>
+                            </div>
+
+                            <div class="card-footer border-0">
+                                <div class="d-flex flex-start ">
+                                    <img class="rounded-circle shadow-1-strong me-3" src="../images/usuario2.png"  alt="avatar" width="30" height="30" />
+                                <div class="form-outline w-100 h-25">
+                                    <textarea class="form-control" id="textAreaExample" rows="1"
+                                    style="background: #fff;"></textarea>
+                                </div>
+                                </div>
+                                <div class="float-end pt-2">
+                                <button type="button" class="btn btn-sm btn-purple">Publicar comentario</button>
+                                <button type="button" class="btn btn-outline-purple btn-sm">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card bg-light mt-2">
+                            <div class="card-body">
+                                <div class="d-flex flex-start align-items-center mb-2">
+                                    <img class="rounded-circle shadow-1-strong me-3"
+                                        src="../images/user3.png" alt="avatar" width="40"
+                                        height="40" />
+                                    <div>
+                                        <h6 class="fw-bold mb-1 purple">Beatriz Jimenez</h6>
+                                        <p class="text-muted small mb-0">
+                                        CINEBOX - 20/06/2023 15:15:01
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <img src="../images/4meses.jpg" class="card-img-top IMGPost" alt="cine" style="height: 250px;">
+
+                                <div class="card-title text-center purple pt-2 "><h5 class="fw-bold">'4 meses, 3 semanas, 2 días' (2007) - Filmin</h5></div>
+                                <p class="mt-2">
+                                    Rumanía, 1987. Bajo el régimen comunista de Nicolae Ceaușescu, el aborto es ilegal y penado con la cárcel.
+                                    Gabita está embarazada y quiere abortar, pero necesita la ayuda de su amiga Otilia para conseguir un médico clandestino.
+                                    Así es como Gabita acaba en la habitación de un hotel a punto de pasar por un aborto ilegal.
+                                    4 meses, 3 semanas, 2 días es una película del director rumano Cristian Mungiu, que retrata con crudeza y realismo la opresión y la miseria de la época.
+                                    "Un recorrido meandroso y austero a través de una sociedad que intenta sobrevivir como puede a la mediocridad vital imperante", dice nuestra crítica Eulàlia Iglesias.
+                                </p>
+                    
+                                <div class="small d-flex justify-content-start">
+                                <a href="#!" class="nav-link purple d-flex align-items-center me-3">
+                                    <i class="far fa-thumbs-up me-1"></i>
+                                    <p class="mb-0">Me gusta</p>
+                                </a>
+                                <a href="#!" class="nav-link purple d-flex align-items-center me-3">
+                                    <i class="far fa-comment-dots me-1"></i>
+                                    <p class="mb-0">Comentar</p>
+                                </a>
+                                <a href="#!" class="nav-link purple d-flex align-items-center me-3">
+                                    <i class="fas fa-share me-1"></i>
+                                    <p class="mb-0">Compartir</p>
+                                </a>
+                                </div>
+                            </div>
+
+                            <div class="card-footer border-0">
+                                <div class="d-flex flex-start ">
+                                    <img class="rounded-circle shadow-1-strong me-3" src="../images/user3.png"  alt="avatar" width="30" height="30" />
+                                <div class="form-outline w-100 h-25">
+                                    <textarea class="form-control" id="textAreaExample" rows="1"
+                                    style="background: #fff;"></textarea>
+                                </div>
+                                </div>
+                                <div class="float-end pt-2">
+                                <button type="button" class="btn btn-sm btn-purple">Publicar comentario</button>
+                                <button type="button" class="btn btn-outline-purple btn-sm">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card bg-light mt-2">
+                            <div class="card-body">
+                                <div class="d-flex flex-start align-items-center mb-2">
+                                    <img class="rounded-circle shadow-1-strong me-3"
+                                        src="../images/usuario2.png" alt="avatar" width="40"
+                                        height="40" />
+                                    <div>
+                                        <h6 class="fw-bold mb-1 purple">Erick Adony</h6>
+                                        <p class="text-muted small mb-0">
+                                        CINEBOX - 21/06/2023 14:01:21
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <img src="../images/laberinto.jpg" class="card-img-top IMGPost" alt="cine" style="height: 250px;">
+
+                                <div class="card-title text-center purple pt-2 "><h5 class="fw-bold">'El laberinto del fauno' (2006) - Disney+</h5></div>
+                                <p class="mt-2">
+                                    Han pasado 5 años tras el final de la Guerra Civil en España. La joven Ofelia se traslada con su madre embarazada al cuartel del cruel capitán Vidal, su nuevo padrastro.
+                                    Allí descubre un antiguo laberinto donde se encuentra con un fauno que le revela su verdadera identidad: es una princesa perdida de un reino mágico. 
+                                    Para volver a su mundo, deberá cumplir tres pruebas antes de la próxima luna llena. 
+                                    El laberinto del fauno es una obra maestra del cine fantástico del director mexicano Guillermo del Toro, que mezcla realidad y fantasía con una gran sensibilidad y belleza. 
+                                </p>
+                    
+                                <div class="small d-flex justify-content-start">
+                                <a href="#!" class="nav-link purple d-flex align-items-center me-3">
+                                    <i class="far fa-thumbs-up me-1"></i>
+                                    <p class="mb-0">Me gusta</p>
+                                </a>
+                                <a href="#!" class="nav-link purple d-flex align-items-center me-3">
+                                    <i class="far fa-comment-dots me-1"></i>
+                                    <p class="mb-0">Comentar</p>
+                                </a>
+                                <a href="#!" class="nav-link purple d-flex align-items-center me-3">
+                                    <i class="fas fa-share me-1"></i>
+                                    <p class="mb-0">Compartir</p>
+                                </a>
+                                </div>
+                            </div>
+
+                            <div class="card-footer border-0">
+                                <div class="d-flex flex-start ">
+                                    <img class="rounded-circle shadow-1-strong me-3" src="../images/usuario2.png"  alt="avatar" width="30" height="30" />
+                                <div class="form-outline w-100 h-25">
+                                    <textarea class="form-control" id="textAreaExample" rows="1"
+                                    style="background: #fff;"></textarea>
+                                </div>
+                                </div>
+                                <div class="float-end pt-2">
+                                <button type="button" class="btn btn-sm btn-purple">Publicar comentario</button>
+                                <button type="button" class="btn btn-outline-purple btn-sm">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card bg-light mt-2">
+                            <div class="card-body">
+                                <div class="d-flex flex-start align-items-center mb-2">
+                                    <img class="rounded-circle shadow-1-strong me-3"
+                                        src="../images/user.avif" alt="avatar" width="40"
+                                        height="40" />
+                                    <div>
+                                        <h6 class="fw-bold mb-1 purple">Jhon Elvis</h6>
+                                        <p class="text-muted small mb-0">
+                                        CINEBOX - 22/06/2023 9:12:11
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <img src="../images/cinta.jpg" class="card-img-top IMGPost" alt="cine" style="height: 250px;">
+
+                                <div class="card-title text-center purple pt-2 "><h5 class="fw-bold">'La cinta blanca' (2009) - Prime Video</h5></div>
+                                <p class="mt-2">
+                                    En un pequeño pueblo protestante del norte de Alemania, justo antes de la Primera Guerra Mundial, empiezan a ocurrir una serie de extraños y violentos incidentes que parecen estar relacionados con los niños del lugar.
+                                    La cinta blanca es una película del director Michael Haneke que indaga en las raíces del mal y del totalitarismo en la sociedad europea.
+                                    La película fue galardonada con la Palma de Oro en el Festival de Cannes, el Globo de Oro a la mejor película extranjera y el premio al mejor largometraje europeo.
+                                </p>
+                                <p class="mt-2">
+                                    "Haneke desarrolla un artefacto paranoico y opresor, quizá demasiado rígido con el espectador, quizá en consonancia con esa misma mano firme y represora con la que guía a sus personajes",
+                                     escribe Paula Arantzazu en su crítica para SensaCine.
+                                </p>
+                    
+                                <div class="small d-flex justify-content-start">
+                                <a href="#!" class="nav-link purple d-flex align-items-center me-3">
+                                    <i class="far fa-thumbs-up me-1"></i>
+                                    <p class="mb-0">Me gusta</p>
+                                </a>
+                                <a href="#!" class="nav-link purple d-flex align-items-center me-3">
+                                    <i class="far fa-comment-dots me-1"></i>
+                                    <p class="mb-0">Comentar</p>
+                                </a>
+                                <a href="#!" class="nav-link purple d-flex align-items-center me-3">
+                                    <i class="fas fa-share me-1"></i>
+                                    <p class="mb-0">Compartir</p>
+                                </a>
+                                </div>
+                            </div>
+
+                            <div class="card-footer border-0">
+                                <div class="d-flex flex-start ">
+                                    <img class="rounded-circle shadow-1-strong me-3" src="../images/user.avif"  alt="avatar" width="30" height="30" />
+                                <div class="form-outline w-100 h-25">
+                                    <textarea class="form-control" id="textAreaExample" rows="1"
+                                    style="background: #fff;"></textarea>
+                                </div>
+                                </div>
+                                <div class="float-end pt-2">
+                                <button type="button" class="btn btn-sm btn-purple">Publicar comentario</button>
+                                <button type="button" class="btn btn-outline-purple btn-sm">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card bg-light mt-2">
+                            <div class="card-body">
+                                <div class="d-flex flex-start align-items-center mb-2">
+                                    <img class="rounded-circle shadow-1-strong me-3"
+                                        src="../images/user.avif" alt="avatar" width="40"
+                                        height="40" />
+                                    <div>
+                                        <h6 class="fw-bold mb-1 purple">Jhon Elvis</h6>
+                                        <p class="text-muted small mb-0">
+                                        CINEBOX - 22/06/2023 9:19:23
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <img src="../images/tio.jpeg" class="card-img-top IMGPost" alt="cine" style="height: 250px;">
+
+                                <div class="card-title text-center purple pt-2 "><h5 class="fw-bold">'Tío Boonmee recuerda sus vidas pasadas' (2010) - Filmin</h5></div>
+                                <p class="mt-2">
+                                    Tío Boonmee es un anciano que padece una enfermedad renal terminal. Preparándose para la despedida final, decide pasar sus últimos días en su granja en el campo, rodeado de sus amigos.
+                                     Allí recibe la visita de los fantasmas de su esposa fallecida y de su hijo desaparecido, que le ayudarán a recordar sus vidas pasadas.
+                                      Tío Boonmee recuerda sus vidas pasadas es una película del director tailandés Apichatpong Weerasethakul que muestra siete niveles de realidad con un estilo más sensorial que narrativo.
+                                       Combina elementos del budismo, el folclore y el cine experimental para crear una obra poética y singular. La película fue premiada con la Palma de Oro en el Festival de Cannes.
+                                </p>
+                    
+                                <div class="small d-flex justify-content-start">
+                                <a href="#!" class="nav-link purple d-flex align-items-center me-3">
+                                    <i class="far fa-thumbs-up me-1"></i>
+                                    <p class="mb-0">Me gusta</p>
+                                </a>
+                                <a href="#!" class="nav-link purple d-flex align-items-center me-3">
+                                    <i class="far fa-comment-dots me-1"></i>
+                                    <p class="mb-0">Comentar</p>
+                                </a>
+                                <a href="#!" class="nav-link purple d-flex align-items-center me-3">
+                                    <i class="fas fa-share me-1"></i>
+                                    <p class="mb-0">Compartir</p>
+                                </a>
+                                </div>
+                            </div>
+
+                            <div class="card-footer border-0">
+                                <div class="d-flex flex-start ">
+                                    <img class="rounded-circle shadow-1-strong me-3" src="../images/user.avif"  alt="avatar" width="30" height="30" />
+                                <div class="form-outline w-100 h-25">
+                                    <textarea class="form-control" id="textAreaExample" rows="1"
+                                    style="background: #fff;"></textarea>
+                                </div>
+                                </div>
+                                <div class="float-end pt-2">
+                                <button type="button" class="btn btn-sm btn-purple">Publicar comentario</button>
+                                <button type="button" class="btn btn-outline-purple btn-sm">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
+
+                    
 
                     <!--SIDEVAR-->
                     <div class="col-xl-3 col-md-auto d-none d-lg-block">
+
                         <div class="d-flex flex-column align-items-center py-5">
                             <div class="card border-white" style="width: auto;">
                                 <h5 class="card-title text-center">Joker</h5>
@@ -203,9 +490,10 @@
                             <div class="card-body">
                                 <p class="card-text">Arthur Fleck adora hacer reír a la gente, pero su carrera como comediante es un
                                     fracaso...</p>
-                                <a href="#" class="btn btn-dark btn-sm">Seguir leyendo...</a>
+                                <a href="https://es.wikipedia.org/wiki/Joker_(pel%C3%ADcula)" class="btn btn-dark btn-sm">Seguir leyendo...</a>
                             </div>
                         </div>
+
                         <div class="row d-flex justify-content-center my-3">
                             <div class="card border-light bg-light">
                                 <div class="card-body">
@@ -227,14 +515,49 @@
 
                             <div class="d-flex flex-column align-items-center my-3 py-5">
                                 <div class="card border-white" style="width: auto;">
+                                    <h5 class="card-title text-center">Eugenio Derbez</h5>
+                                    <img src="./images/derbez.jpg" class="card-img-top rounded-circle align-self-center" alt="Joker"
+                                         style="height: 150px; width: 150px;">
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">En la década de 1980 y a inicios de 1990, Derbez tuvo pequeñas participaciones en varias novelas de Televisa como Caminemos (1980)...</p>
+                                    <a href="https://es.wikipedia.org/wiki/Eugenio_Derbez" class="btn btn-dark btn-sm">Seguir leyendo...</a>
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-column align-items-center my-3 py-5">
+                                <div class="card border-white" style="width: auto;">
+                                    <h5 class="card-title text-center">Barbie</h5>
+                                    <img src="./images/barbie.jpg" class="card-img-top rounded-circle align-self-center" alt="Joker"
+                                         style="height: 150px; width: 150px;">
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Barbie es una próxima película de comedia romántica británica-estadounidense basada en la línea de juguetes del mismo nombre de Mattel...</p>
+                                    <a href="https://es.wikipedia.org/wiki/Barbie_(pel%C3%ADcula)" class="btn btn-dark btn-sm">Seguir leyendo...</a>
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-column align-items-center my-3 py-5">
+                                <div class="card border-white" style="width: auto;">
+                                    <h5 class="card-title text-center">Train to Busan</h5>
+                                    <img src="./images/busan.jpg" class="card-img-top rounded-circle align-self-center" alt="Joker"
+                                         style="height: 150px; width: 150px;">
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">La película se desarrolla principalmente en un tren a Busan cuando un apocalipsis zombi estalla repentinamente en el país y amenaza la seguridad de los pasajeros...</p>
+                                    <a href="https://es.wikipedia.org/wiki/Train_to_Busan" class="btn btn-dark btn-sm">Seguir leyendo...</a>
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-column align-items-center my-3 py-5">
+                                <div class="card border-white" style="width: auto;">
                                     <h5 class="card-title text-center">Groot</h5>
                                     <img src="./images/groot.jpg" class="card-img-top rounded-circle align-self-center" alt="Joker"
                                          style="height: 150px; width: 150px;">
                                 </div>
                                 <div class="card-body">
-                                    <p class="card-text">Arthur Fleck adora hacer reír a la gente, pero su carrera como comediante es un
-                                        fracaso...</p>
-                                    <a href="#" class="btn btn-dark btn-sm">Seguir leyendo...</a>
+                                    <p class="card-text">Groot es un superhéroe ficticio que aparece en los cómics estadounidenses publicados por Marvel Comics...</p>
+                                    <a href="https://es.wikipedia.org/wiki/Groot" class="btn btn-dark btn-sm">Seguir leyendo...</a>
                                 </div>
                             </div>
                         </div>
