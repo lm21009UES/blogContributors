@@ -10,6 +10,13 @@
 * JavaScript
 * Bootstrap
 
+## Autores ✒️
+* John Elvis Arbaiza Velásquez - AV21019
+* Edis Beatriz Cuadra Jiménez - CJ21004
+* Erick Adony López Meléndez - LM21009
+* Hugo Alexander Ulloa Serpas - US21003
+* Ángel Gabriel Vásquez Crespo - VC21007
+  
 ## Proyecto realizado con fines educativos :mortar_board:
 
 
